@@ -17,17 +17,17 @@ export default function FloatingIcons() {
         <motion.div
           key={i}
           initial={{
-            x: Math.random() * 100,
-            y: Math.random() * 100,
-            opacity: 0.3,
+            x: 0,
+            y: 0,
+            opacity: 0.2,
           }}
           animate={{
-            x: [null, Math.random() * 100 - 50],
-            y: [null, Math.random() * 100 - 50],
+            x: [0, 10, 0],
+            y: [0, 10, 0],
             transition: {
-              duration: 20 + Math.random() * 20,
+              duration: 30,
               repeat: Infinity,
-              repeatType: 'reverse',
+              ease: "easeInOut",
             },
           }}
           // Added will-change and transform-gpu for performance

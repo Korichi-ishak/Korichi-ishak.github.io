@@ -33,17 +33,17 @@ export default function Home() {
   ];
 
   return (
-    <div className="dark min-h-screen bg-[#0a192f] text-[#e6f1ff] p-8 sm:p-20">
+    <div className="min-h-screen bg-white text-gray-800 p-8 sm:p-20">
       {/* Navigation Menu */}
-      <nav className="fixed top-0 left-0 w-full bg-[#112240]/80 backdrop-blur-sm shadow z-10">
+      <nav className="fixed top-0 left-0 w-full bg-white border-b border-gray-200 backdrop-blur-sm shadow z-10">
         <div className="max-w-5xl mx-auto flex justify-between items-center p-4">
           <div className="text-xl font-bold">Ishak Korichi</div>
           <div className="space-x-6">
-            <a href="#about" className="hover:text-[#64ffda] transition">About Me</a>
-            <a href="#projects" className="hover:text-[#64ffda] transition">Projects</a>
-            <a href="#skills" className="hover:text-[#64ffda] transition">Skills</a>
-            <a href="#experience" className="hover:text-[#64ffda] transition">Experience</a>
-            <a href="#contact" className="hover:text-[#64ffda] transition">Contact</a>
+            <a href="#about" className="hover:text-blue-500 transition">About Me</a>
+            <a href="#projects" className="hover:text-blue-500 transition">Projects</a>
+            <a href="#skills" className="hover:text-blue-500 transition">Skills</a>
+            <a href="#experience" className="hover:text-blue-500 transition">Experience</a>
+            <a href="#contact" className="hover:text-blue-500 transition">Contact</a>
           </div>
         </div>
       </nav>
@@ -52,7 +52,7 @@ export default function Home() {
         {/* Header/Introduction Section */}
         <section id="introduction" className="text-center my-16">
           <h1 className="text-5xl font-extrabold">Ishak Korichi</h1>
-          <h2 className="text-2xl text-gray-300 mt-4">
+          <h2 className="text-2xl text-gray-600 mt-4">
             Backend Developer | Data Analyst | Node.js, React & MongoDB Expert
           </h2>
           <p className="mt-6 text-lg">
@@ -87,7 +87,7 @@ export default function Home() {
         <section id="skills" className="my-16">
           <h2 className="text-4xl font-bold text-center mb-12">Skills</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="p-6 bg-[#112240] rounded shadow">
+            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
               <h3 className="text-2xl font-semibold mb-4">Languages</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>JavaScript</li>
@@ -96,7 +96,7 @@ export default function Home() {
                 <li>R</li>
               </ul>
             </div>
-            <div className="p-6 bg-[#112240] rounded shadow">
+            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
               <h3 className="text-2xl font-semibold mb-4">Frameworks & Libraries</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>Node.js</li>
@@ -105,14 +105,14 @@ export default function Home() {
                 <li>Flutter</li>
               </ul>
             </div>
-            <div className="p-6 bg-[#112240] rounded shadow">
+            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
               <h3 className="text-2xl font-semibold mb-4">Databases</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>MongoDB</li>
                 <li>PostgreSQL</li>
               </ul>
             </div>
-            <div className="p-6 bg-[#112240] rounded shadow">
+            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
               <h3 className="text-2xl font-semibold mb-4">Cloud & Backend</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>Firebase</li>
@@ -120,7 +120,7 @@ export default function Home() {
                 <li>JWT Authentication</li>
               </ul>
             </div>
-            <div className="p-6 bg-[#112240] rounded shadow">
+            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
               <h3 className="text-2xl font-semibold mb-4">Other</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>WordPress</li>
@@ -134,9 +134,9 @@ export default function Home() {
         <section id="experience" className="my-16">
           <h2 className="text-4xl font-bold text-center mb-12">Experience</h2>
           <div className="space-y-6">
-            <div className="p-6 bg-[#112240] rounded shadow">
+            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
               <h3 className="text-2xl font-semibold">Backend Developer & Data Analyst at Aurafolio</h3>
-              <p className="mt-2 text-sm text-gray-400">Jun 2023 - Present</p>
+              <p className="mt-2 text-sm text-gray-500">Jun 2023 - Present</p>
               <ul className="list-disc pl-5 mt-2 text-sm">
                 <li>Designed high-performance APIs with Node.js/Express</li>
                 <li>Optimized databases (MongoDB, Firebase, MySQL) improving performance by 40%</li>
@@ -144,9 +144,9 @@ export default function Home() {
                 <li>Deployed scalable architectures</li>
               </ul>
             </div>
-            <div className="p-6 bg-[#112240] rounded shadow">
+            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
               <h3 className="text-2xl font-semibold">Freelance Developer (WordPress & UI/UX)</h3>
-              <p className="mt-2 text-sm text-gray-400">Mar 2023 - Present</p>
+              <p className="mt-2 text-sm text-gray-500">Mar 2023 - Present</p>
               <ul className="list-disc pl-5 mt-2 text-sm">
                 <li>Interactive UI/UX prototyping</li>
                 <li>Developed high-performance WordPress websites</li>
@@ -159,14 +159,14 @@ export default function Home() {
         <section id="education" className="my-16">
           <h2 className="text-4xl font-bold text-center mb-12">Education</h2>
           <div className="space-y-6">
-            <div className="p-6 bg-[#112240] rounded shadow">
+            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
               <h3 className="text-2xl font-semibold">Master’s in Big Data Management</h3>
-              <p className="mt-2 text-sm text-gray-400">Université Badji Mokhtar (2024 - 2026)</p>
+              <p className="mt-2 text-sm text-gray-500">Université Badji Mokhtar (2024 - 2026)</p>
               <p className="mt-2 text-sm">Skills Gained: Python, Data Analysis, Machine Learning</p>
             </div>
-            <div className="p-6 bg-[#112240] rounded shadow">
+            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
               <h3 className="text-2xl font-semibold">Bachelor’s in Computer Science</h3>
-              <p className="mt-2 text-sm text-gray-400">Université Badji Mokhtar (2021 - 2024)</p>
+              <p className="mt-2 text-sm text-gray-500">Université Badji Mokhtar (2021 - 2024)</p>
               <p className="mt-2 text-sm">Relevant Courses: Databases, Algorithms, Data Structures</p>
             </div>
           </div>
@@ -176,10 +176,10 @@ export default function Home() {
         <section id="contact" className="my-16">
           <h2 className="text-4xl font-bold text-center mb-12">Contact</h2>
           <form className="max-w-md mx-auto space-y-6">
-            <input type="text" placeholder="Name" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#64ffda]" required />
-            <input type="email" placeholder="Email" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#64ffda]" required />
-            <textarea placeholder="Message" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#64ffda]" rows="5" required></textarea>
-            <button type="submit" className="w-full bg-[#64ffda] text-[#0a192f] py-3 rounded hover:bg-teal-400 transition">
+            <input type="text" placeholder="Name" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-300" required />
+            <input type="email" placeholder="Email" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-300" required />
+            <textarea placeholder="Message" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-300" rows="5" required></textarea>
+            <button type="submit" className="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition">
               Send Message
             </button>
           </form>
@@ -198,16 +198,16 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#112240] py-8 shadow-inner mt-16">
+      <footer className="bg-gray-800 py-8 shadow-inner mt-16 text-white">
         <div className="max-w-5xl mx-auto text-center space-y-2">
           <p>
-            Email: <a href="mailto:ishakkorichi09@gmail.com" className="text-[#64ffda] hover:underline">ishakkorichi09@gmail.com</a>
+            Email: <a href="mailto:ishakkorichi09@gmail.com" className="text-blue-300 hover:underline">ishakkorichi09@gmail.com</a>
           </p>
           <p>
-            GitHub: <a href="https://github.com/Chrestiondior77" className="text-[#64ffda] hover:underline">github.com/Chrestiondior77</a>
+            GitHub: <a href="https://github.com/Chrestiondior77" className="text-blue-300 hover:underline">github.com/Chrestiondior77</a>
           </p>
           <p>
-            LinkedIn: <a href="https://linkedin.com/in/ishak-korichi-77a398321" className="text-[#64ffda] hover:underline">linkedin.com/in/ishak-korichi-77a398321</a>
+            LinkedIn: <a href="https://linkedin.com/in/ishak-korichi-77a398321" className="text-blue-300 hover:underline">linkedin.com/in/ishak-korichi-77a398321</a>
           </p>
           <p>WhatsApp: +213541945025</p>
         </div>
