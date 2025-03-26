@@ -1,7 +1,7 @@
 export default function ProjectCard({ title, description, technologies, link }) {
   return (
-    <div className="border p-4 rounded shadow hover:shadow-lg transition-shadow">
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
+    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition duration-200">
+      <h3 className="text-2xl font-semibold mb-3">{title}</h3>
       <p className="text-gray-700 mb-4">{description}</p>
       <p className="text-sm text-gray-500 mb-4">
         <strong>Technologies:</strong> {technologies.join(", ")}
@@ -10,9 +10,9 @@ export default function ProjectCard({ title, description, technologies, link }) 
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-blue-500 hover:underline"
+        className="inline-block text-blue-500 hover:underline font-medium"
       >
-        View Project
+        View Project →
       </a>
     </div>
   );
