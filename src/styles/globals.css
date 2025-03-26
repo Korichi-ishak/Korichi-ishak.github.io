@@ -1,6 +1,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #0f1624;
+  --secondary: #64ffda;
+  --accent: #0fe9f9;
 }
 
 @theme inline {
@@ -50,15 +53,17 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
+/* Enhanced Card Styling */
 .card { 
-  background: #112240; 
-  border-left: 4px solid #64ffda;
-  transition: all 0.3s ease; 
+  background: #192734; 
+  border-left: 4px solid var(--secondary);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
 .card:hover { 
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
 /* ProfileCard Component */
@@ -158,4 +163,99 @@ button:hover {
       transition: none;
     }
   }
+}
+
+/* Header and Navigation Styles */
+.header {
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: fade-in 1s ease-out;
+}
+.header .menu a {
+  color: #fff;
+  margin: 0 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.header .menu a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--secondary);
+  transition: width 0.3s ease;
+}
+.header .menu a:hover {
+  color: var(--secondary);
+}
+.header .menu a:hover::after {
+  width: 100%;
+}
+
+/* Contact Icons (LinkedIn, GitHub, WhatsApp) */
+.contact-icons {
+  display: flex;
+  gap: 1rem;
+}
+.contact-icons a {
+  color: var(--secondary);
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+.contact-icons a:hover {
+  transform: translateY(-5px);
+}
+/* Example of clickable icon markup:
+   <div class="contact-icons">
+     <a href="https://linkedin.com/in/yourprofile" target="_blank"><!-- LinkedIn Icon --></a>
+     <a href="https://github.com/yourprofile" target="_blank"><!-- GitHub Icon --></a>
+     <a href="https://wa.me/yourNumber" target="_blank"><!-- WhatsApp Icon --></a>
+   </div>
+*/
+
+/* Button Styling and Animation */
+button {
+  background: var(--secondary);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  color: var(--primary);
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+button:hover {
+  background: var(--accent);
+  transform: scale(1.05);
+}
+
+/* Forum/Form Styling */
+.forum {
+  background: #112240;
+  padding: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: box-shadow 0.3s ease;
+}
+.forum:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Navigation Animation */
+.nav-animation {
+  transition: all 0.3s ease;
+}
+.nav-animation-enter {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+.nav-animation-enter-active {
+  opacity: 1;
+  transform: translateY(0);
 }
