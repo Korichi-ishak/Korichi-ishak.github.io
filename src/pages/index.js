@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ProjectCard from "../components/ProjectCard"; // Import the reusable project card component
 import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
@@ -12,8 +13,33 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
+  const projects = [
+    {
+      title: "Project 1",
+      description: "A web application for managing tasks.",
+      technologies: ["React", "Node.js", "MongoDB"],
+      link: "https://github.com/example/project1",
+    },
+    {
+      title: "Project 2",
+      description: "A mobile app for tracking fitness goals.",
+      technologies: ["React Native", "Firebase"],
+      link: "https://github.com/example/project2",
+    },
+    // Add more projects as needed
+  ];
+
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="min-h-screen p-8 sm:p-20">
+      {/* Introduction Section */}
+      <section id="introduction" className="text-center mb-16">
+        <h1 className="text-4xl font-bold">Korichi Ishak</h1>
+        <h2 className="text-2xl text-gray-600">Backend Developer & Data Analyst</h2>
+        <p className="mt-4 text-lg">
+          A developer specialized in Node.js, MongoDB, Firebase, and data analysis. Passionate about building APIs, optimizing databases, and cloud computing.
+        </p>
+      </section>
+
       {/* Navigation Menu */}
       <nav className="row-start-1 w-full flex justify-center gap-8 bg-gray-100 p-4 fixed top-0 z-10">
         <a href="#about" className="hover:underline">À propos de moi</a>
@@ -69,90 +95,125 @@ export default function Home() {
           </a>
         </div>
 
-        {/* À propos de moi Section */}
-        <section id="about" className="w-full mt-16">
-          <h2 className="text-2xl font-bold mb-4">À propos de moi</h2>
-          <p className="text-base">
-            Bonjour, je suis un développeur passionné par la création de sites web modernes et performants.
-          </p>
+        {/* Projects Section */}
+        <section id="projects" className="mb-16">
+          <h2 className="text-3xl font-bold mb-8">Projects</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <ProjectCard key={index} {...project} />
+            ))}
+          </div>
         </section>
 
-        {/* Mes projets Section */}
-        <section id="projects" className="w-full mt-16">
-          <h2 className="text-2xl font-bold mb-4">Mes projets</h2>
+        {/* Skills Section */}
+        <section id="skills" className="mb-16">
+          <h2 className="text-3xl font-bold mb-8">Skills</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold">Languages</h3>
+              <ul className="list-disc pl-5">
+                <li>JavaScript</li>
+                <li>Python</li>
+                <li>Go</li>
+                <li>R</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold">Frameworks & Libraries</h3>
+              <ul className="list-disc pl-5">
+                <li>Node.js</li>
+                <li>React</li>
+                <li>React Native</li>
+                <li>Flutter</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold">Databases</h3>
+              <ul className="list-disc pl-5">
+                <li>MongoDB</li>
+                <li>PostgreSQL</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold">Cloud & Backend</h3>
+              <ul className="list-disc pl-5">
+                <li>Firebase</li>
+                <li>API REST</li>
+                <li>JWT Authentication</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold">Others</h3>
+              <ul className="list-disc pl-5">
+                <li>WordPress</li>
+                <li>UI/UX Design</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Experience Section */}
+        <section id="experience" className="mb-16">
+          <h2 className="text-3xl font-bold mb-8">Experience</h2>
           <ul className="list-disc pl-5">
-            <li>Projet 1: Description du projet 1.</li>
-            <li>Projet 2: Description du projet 2.</li>
-            <li>Projet 3: Description du projet 3.</li>
+            <li>
+              <strong>Backend Developer & Data Analyst</strong> at Aurafolio
+            </li>
+            <li>
+              <strong>Freelance Developer</strong>: API development, cloud integration, database optimization.
+            </li>
           </ul>
         </section>
 
-        {/* Mes formations Section */}
-        <section id="education" className="w-full mt-16">
-          <h2 className="text-2xl font-bold mb-4">Mes formations</h2>
-          <ul className="list-disc pl-5">
-            <li>Formation 1: Description de la formation 1.</li>
-            <li>Formation 2: Description de la formation 2.</li>
-            <li>Formation 3: Description de la formation 3.</li>
-          </ul>
+        {/* Contact Form Section */}
+        <section id="contact" className="mb-16">
+          <h2 className="text-3xl font-bold mb-8">Contact</h2>
+          <form className="flex flex-col gap-4 max-w-md mx-auto">
+            <input
+              type="text"
+              placeholder="Name"
+              className="border p-2 rounded"
+              required
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              className="border p-2 rounded"
+              required
+            />
+            <textarea
+              placeholder="Message"
+              className="border p-2 rounded"
+              rows="5"
+              required
+            ></textarea>
+            <button
+              type="submit"
+              className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            >
+              Send Message
+            </button>
+          </form>
         </section>
 
-        {/* Contact Section */}
-        <section id="contact" className="w-full mt-16">
-          <h2 className="text-2xl font-bold mb-4">Contact</h2>
-          <p className="text-base">
-            Vous pouvez me contacter à l'adresse suivante : <a href="mailto:example@example.com" className="text-blue-500 hover:underline">example@example.com</a>
+        {/* About Me Section */}
+        <section id="about" className="mb-16">
+          <h2 className="text-3xl font-bold mb-8">About Me</h2>
+          <p>
+            I chose development because I love solving problems and creating
+            efficient solutions. My goal is to become a leading expert in backend
+            development and data analysis, contributing to impactful projects.
           </p>
         </section>
+
+        {/* Footer */}
+        <footer className="text-center mt-16">
+          <p>Email: <a href="mailto:ishakkorichi09@gmail.com" className="text-blue-500 hover:underline">ishakkorichi09@gmail.com</a></p>
+          <p>GitHub: <a href="https://github.com/your-profile" className="text-blue-500 hover:underline">GitHub Profile</a></p>
+          <p>LinkedIn: <a href="https://linkedin.com/in/your-profile" className="text-blue-500 hover:underline">LinkedIn Profile</a></p>
+          <p>WhatsApp: +123456789</p>
+        </footer>
       </main>
-
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="./file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="./window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="./globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
