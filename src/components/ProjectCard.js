@@ -1,19 +1,25 @@
+import { 
+  CodeIcon, 
+  ExternalLinkIcon, 
+  PaletteIcon 
+} from "lucide-react";
+
 export default function ProjectCard({ title, description, technologies, link }) {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 ease-out">
-      <h3 className="text-2xl font-semibold mb-3 text-gray-900">{title}</h3>
-      <p className="text-gray-600 mb-4">{description}</p>
-      <p className="text-sm text-gray-500 mb-4">
-        <strong>Technologies:</strong> {technologies.join(", ")}
-      </p>
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block text-blue-500 hover:underline font-medium"
-      >
-        View Project →
-      </a>
+    <div className="bg-[#222224] p-6 rounded-2xl border border-[#2C2C2E] shadow-lg group hover:border-[#CAFA43] transition-all duration-300">
+      <div className="flex justify-between items-center mb-4">
+        <CodeIcon className="w-10 h-10 text-[#CAFA43] group-hover:rotate-12 transition-transform" />
+        <a href={link} target="_blank" rel="noopener noreferrer"
+          className="text-[#CAFA43] hover:bg-[#CAFA43]/10 p-2 rounded-full transition">
+          <ExternalLinkIcon className="w-6 h-6" />
+        </a>
+      </div>
+      <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
+      <p className="text-gray-400 mb-4 text-sm">{description}</p>
+      <div className="flex items-center text-sm text-gray-500">
+        <PaletteIcon className="w-4 h-4 mr-2 text-[#CAFA43]" />
+        <span>{technologies.join(" • ")}</span>
+      </div>
     </div>
   );
 }
