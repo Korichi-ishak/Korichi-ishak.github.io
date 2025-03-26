@@ -12,20 +12,25 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
-  const projects = [
-    {
-      title: "Project 1",
-      description: "A web application for managing tasks.",
-      technologies: ["React", "Node.js", "MongoDB"],
-      link: "https://github.com/example/project1",
-    },
-    {
-      title: "Project 2",
-      description: "A mobile app for tracking fitness goals.",
-      technologies: ["React Native", "Firebase"],
-      link: "https://github.com/example/project2",
-    },
-    // Add more projects as needed
+  const wpProjects = [
+    { title: "EAG Video Editor", description: "Elegant video editing website powered by WordPress.", technologies: ["WordPress", "UI/UX Design"], link: "https://eagvideoeditor.com" },
+    { title: "Diego De La Fuintes", description: "Professional portfolio website.", technologies: ["WordPress"], link: "https://diegodelafuintes.fr" },
+    { title: "Qorrolli Renovation", description: "Renovation services website.", technologies: ["WordPress"], link: "https://qorrollirenovation.fr" },
+    { title: "Maison Chevalier", description: "Luxury real-estate showcase.", technologies: ["WordPress"], link: "https://maison-chevalier.fr" },
+    { title: "Between Us", description: "Modern creative site.", technologies: ["WordPress"], link: "https://between-us.fr" },
+    { title: "Drip Drop DZ", description: "Innovative design platform.", technologies: ["WordPress"], link: "https://dripdropdz.com" },
+    { title: "Belfort Dzair", description: "Corporate website with modern design.", technologies: ["WordPress"], link: "https://belfortdzair.com" },
+    { title: "Breizh Agency", description: "Agency portfolio website.", technologies: ["WordPress"], link: "https://breizh-agency.fr" },
+    { title: "Nerolia Propreté", description: "Clean and professional cleaning services site.", technologies: ["WordPress"], link: "https://nerolia-proprete.fr" },
+    { title: "Plombi", description: "Innovative plumbing services website.", technologies: ["WordPress"], link: "https://plombi.live-website.com" },
+    { title: "EF Énergie Solutions", description: "Energy solutions website.", technologies: ["WordPress"], link: "https://efenergiesolutions.fr" },
+    { title: "AD EauPro", description: "Water solutions platform.", technologies: ["WordPress"], link: "https://ad-eaupro.fr" },
+  ];
+
+  const mobileProjects = [
+    { title: "Wassalni", description: "Carpooling mobile app.", technologies: ["React Native", "Flutter"], link: "https://example.com/wassalni" },
+    { title: "Clinical", description: "Medical mobile application.", technologies: ["React Native"], link: "https://example.com/clinical" },
+    { title: "Astrolabs", description: "Mental health & personal assistance app.", technologies: ["Flutter"], link: "https://example.com/astrolabs" },
   ];
 
   return (
@@ -50,18 +55,30 @@ export default function Home() {
           <h1 className="text-5xl font-extrabold">Korichi Ishak</h1>
           <h2 className="text-2xl text-gray-600 mt-4">Backend Developer & Data Analyst</h2>
           <p className="mt-6 text-lg">
-            A developer specialized in Node.js, MongoDB, Firebase, and data analysis.
-            Passionate about building APIs, optimizing databases, and cloud computing.
+            Experienced in Node.js, MongoDB, Firebase, and data analysis. Passionate about API development, database optimization, and cloud computing.
           </p>
         </section>
 
         {/* Projects Section */}
         <section id="projects" className="my-16">
           <h2 className="text-4xl font-bold text-center mb-12">Projects</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <ProjectCard key={index} {...project} />
-            ))}
+
+          <div className="mb-12">
+            <h3 className="text-2xl font-semibold mb-4">WordPress Websites</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {wpProjects.map((project, index) => (
+                <ProjectCard key={index} {...project} />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-2xl font-semibold mb-4">Mobile Applications</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {mobileProjects.map((project, index) => (
+                <ProjectCard key={index} {...project} />
+              ))}
+            </div>
           </div>
         </section>
 
@@ -69,7 +86,6 @@ export default function Home() {
         <section id="skills" className="my-16">
           <h2 className="text-4xl font-bold text-center mb-12">Skills</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Languages */}
             <div className="p-6 bg-white rounded shadow">
               <h3 className="text-2xl font-semibold mb-4">Languages</h3>
               <ul className="list-disc pl-5 space-y-2">
@@ -79,7 +95,6 @@ export default function Home() {
                 <li>R</li>
               </ul>
             </div>
-            {/* Frameworks & Libraries */}
             <div className="p-6 bg-white rounded shadow">
               <h3 className="text-2xl font-semibold mb-4">Frameworks & Libraries</h3>
               <ul className="list-disc pl-5 space-y-2">
@@ -89,7 +104,6 @@ export default function Home() {
                 <li>Flutter</li>
               </ul>
             </div>
-            {/* Databases */}
             <div className="p-6 bg-white rounded shadow">
               <h3 className="text-2xl font-semibold mb-4">Databases</h3>
               <ul className="list-disc pl-5 space-y-2">
@@ -97,18 +111,16 @@ export default function Home() {
                 <li>PostgreSQL</li>
               </ul>
             </div>
-            {/* Cloud & Backend */}
             <div className="p-6 bg-white rounded shadow">
               <h3 className="text-2xl font-semibold mb-4">Cloud & Backend</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>Firebase</li>
-                <li>API REST</li>
+                <li>REST APIs</li>
                 <li>JWT Authentication</li>
               </ul>
             </div>
-            {/* Others */}
             <div className="p-6 bg-white rounded shadow">
-              <h3 className="text-2xl font-semibold mb-4">Others</h3>
+              <h3 className="text-2xl font-semibold mb-4">Other</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>WordPress</li>
                 <li>UI/UX Design</li>
@@ -122,14 +134,12 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-center mb-12">Experience</h2>
           <div className="space-y-6">
             <div className="p-6 bg-white rounded shadow">
-              <h3 className="text-2xl font-semibold">
-                Backend Developer & Data Analyst
-              </h3>
+              <h3 className="text-2xl font-semibold">Backend Developer & Data Analyst</h3>
               <p className="mt-2">Aurafolio</p>
             </div>
             <div className="p-6 bg-white rounded shadow">
               <h3 className="text-2xl font-semibold">Freelance Developer</h3>
-              <p className="mt-2">API development, cloud integration, database optimization.</p>
+              <p className="mt-2">API creation, cloud integration, database optimization.</p>
             </div>
           </div>
         </section>
@@ -138,28 +148,10 @@ export default function Home() {
         <section id="contact" className="my-16">
           <h2 className="text-4xl font-bold text-center mb-12">Contact</h2>
           <form className="max-w-md mx-auto space-y-6">
-            <input
-              type="text"
-              placeholder="Name"
-              className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            />
-            <textarea
-              placeholder="Message"
-              className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-              rows="5"
-              required
-            ></textarea>
-            <button
-              type="submit"
-              className="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition"
-            >
+            <input type="text" placeholder="Name" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" required />
+            <input type="email" placeholder="Email" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" required />
+            <textarea placeholder="Message" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" rows="5" required></textarea>
+            <button type="submit" className="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition">
               Send Message
             </button>
           </form>
@@ -169,9 +161,8 @@ export default function Home() {
         <section id="about" className="my-16">
           <h2 className="text-4xl font-bold text-center mb-12">About Me</h2>
           <p className="max-w-3xl mx-auto text-lg text-center">
-            I chose development because I love solving problems and creating efficient solutions.
-            My goal is to become a leading expert in backend development and data analysis,
-            contributing to impactful projects.
+            I love development because it allows me to solve real-world problems and innovate with technology.
+            Every project is a new challenge that fuels my passion for learning and continuous improvement.
           </p>
         </section>
       </main>
@@ -183,12 +174,12 @@ export default function Home() {
             Email: <a href="mailto:ishakkorichi09@gmail.com" className="text-blue-500 hover:underline">ishakkorichi09@gmail.com</a>
           </p>
           <p>
-            GitHub: <a href="https://github.com/your-profile" className="text-blue-500 hover:underline">GitHub Profile</a>
+            GitHub: <a href="https://github.com/Chrestiondior77" className="text-blue-500 hover:underline">github.com/Chrestiondior77</a>
           </p>
           <p>
-            LinkedIn: <a href="https://linkedin.com/in/your-profile" className="text-blue-500 hover:underline">LinkedIn Profile</a>
+            LinkedIn: <a href="https://linkedin.com/in/ishak-korichi-77a398321" className="text-blue-500 hover:underline">linkedin.com/in/ishak-korichi-77a398321</a>
           </p>
-          <p>WhatsApp: +123456789</p>
+          <p>WhatsApp: +213541945025</p>
         </div>
       </footer>
     </div>

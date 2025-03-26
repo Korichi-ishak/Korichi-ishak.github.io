@@ -1,6 +1,6 @@
 export default function ProjectCard({ title, description, technologies, link }) {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 transition duration-200">
+    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 ease-out">
       <h3 className="text-2xl font-semibold mb-3">{title}</h3>
       <p className="text-gray-700 mb-4">{description}</p>
       <p className="text-sm text-gray-500 mb-4">
