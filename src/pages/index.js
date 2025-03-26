@@ -1,11 +1,10 @@
-import ProjectCard from "../components/ProjectCard"; // Import the reusable project card component
+import ProjectCard from "../components/ProjectCard";
 import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -34,28 +33,30 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 p-8 sm:p-20 text-gray-900">
+    <div className="dark min-h-screen bg-[#0a192f] text-[#e6f1ff] p-8 sm:p-20">
       {/* Navigation Menu */}
-      <nav className="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-sm shadow z-10">
+      <nav className="fixed top-0 left-0 w-full bg-[#112240]/80 backdrop-blur-sm shadow z-10">
         <div className="max-w-5xl mx-auto flex justify-between items-center p-4">
-          <div className="text-xl font-bold">Korichi Ishak</div>
+          <div className="text-xl font-bold">Ishak Korichi</div>
           <div className="space-x-6">
-            <a href="#about" className="hover:text-blue-500 transition">About Me</a>
-            <a href="#projects" className="hover:text-blue-500 transition">Projects</a>
-            <a href="#skills" className="hover:text-blue-500 transition">Skills</a>
-            <a href="#experience" className="hover:text-blue-500 transition">Experience</a>
-            <a href="#contact" className="hover:text-blue-500 transition">Contact</a>
+            <a href="#about" className="hover:text-[#64ffda] transition">About Me</a>
+            <a href="#projects" className="hover:text-[#64ffda] transition">Projects</a>
+            <a href="#skills" className="hover:text-[#64ffda] transition">Skills</a>
+            <a href="#experience" className="hover:text-[#64ffda] transition">Experience</a>
+            <a href="#contact" className="hover:text-[#64ffda] transition">Contact</a>
           </div>
         </div>
       </nav>
       
       <main className="pt-20 max-w-5xl mx-auto">
-        {/* Introduction Section */}
+        {/* Header/Introduction Section */}
         <section id="introduction" className="text-center my-16">
-          <h1 className="text-5xl font-extrabold">Korichi Ishak</h1>
-          <h2 className="text-2xl text-gray-600 mt-4">Backend Developer & Data Analyst</h2>
+          <h1 className="text-5xl font-extrabold">Ishak Korichi</h1>
+          <h2 className="text-2xl text-gray-300 mt-4">
+            Backend Developer | Data Analyst | Node.js, React & MongoDB Expert
+          </h2>
           <p className="mt-6 text-lg">
-            Experienced in Node.js, MongoDB, Firebase, and data analysis. Passionate about API development, database optimization, and cloud computing.
+            I specialize in building high-performance, scalable backend solutions and optimizing data workflows. With expertise in Node.js, React, MongoDB, and Firebase, I develop secure, efficient applications while pursuing my Master's in Big Data Management.
           </p>
         </section>
 
@@ -86,7 +87,7 @@ export default function Home() {
         <section id="skills" className="my-16">
           <h2 className="text-4xl font-bold text-center mb-12">Skills</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="p-6 bg-white rounded shadow">
+            <div className="p-6 bg-[#112240] rounded shadow">
               <h3 className="text-2xl font-semibold mb-4">Languages</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>JavaScript</li>
@@ -95,7 +96,7 @@ export default function Home() {
                 <li>R</li>
               </ul>
             </div>
-            <div className="p-6 bg-white rounded shadow">
+            <div className="p-6 bg-[#112240] rounded shadow">
               <h3 className="text-2xl font-semibold mb-4">Frameworks & Libraries</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>Node.js</li>
@@ -104,14 +105,14 @@ export default function Home() {
                 <li>Flutter</li>
               </ul>
             </div>
-            <div className="p-6 bg-white rounded shadow">
+            <div className="p-6 bg-[#112240] rounded shadow">
               <h3 className="text-2xl font-semibold mb-4">Databases</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>MongoDB</li>
                 <li>PostgreSQL</li>
               </ul>
             </div>
-            <div className="p-6 bg-white rounded shadow">
+            <div className="p-6 bg-[#112240] rounded shadow">
               <h3 className="text-2xl font-semibold mb-4">Cloud & Backend</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>Firebase</li>
@@ -119,7 +120,7 @@ export default function Home() {
                 <li>JWT Authentication</li>
               </ul>
             </div>
-            <div className="p-6 bg-white rounded shadow">
+            <div className="p-6 bg-[#112240] rounded shadow">
               <h3 className="text-2xl font-semibold mb-4">Other</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>WordPress</li>
@@ -133,13 +134,40 @@ export default function Home() {
         <section id="experience" className="my-16">
           <h2 className="text-4xl font-bold text-center mb-12">Experience</h2>
           <div className="space-y-6">
-            <div className="p-6 bg-white rounded shadow">
-              <h3 className="text-2xl font-semibold">Backend Developer & Data Analyst</h3>
-              <p className="mt-2">Aurafolio</p>
+            <div className="p-6 bg-[#112240] rounded shadow">
+              <h3 className="text-2xl font-semibold">Backend Developer & Data Analyst at Aurafolio</h3>
+              <p className="mt-2 text-sm text-gray-400">Jun 2023 - Present</p>
+              <ul className="list-disc pl-5 mt-2 text-sm">
+                <li>Designed high-performance APIs with Node.js/Express</li>
+                <li>Optimized databases (MongoDB, Firebase, MySQL) improving performance by 40%</li>
+                <li>Integrated cloud services & implemented authentication systems</li>
+                <li>Deployed scalable architectures</li>
+              </ul>
             </div>
-            <div className="p-6 bg-white rounded shadow">
-              <h3 className="text-2xl font-semibold">Freelance Developer</h3>
-              <p className="mt-2">API creation, cloud integration, database optimization.</p>
+            <div className="p-6 bg-[#112240] rounded shadow">
+              <h3 className="text-2xl font-semibold">Freelance Developer (WordPress & UI/UX)</h3>
+              <p className="mt-2 text-sm text-gray-400">Mar 2023 - Present</p>
+              <ul className="list-disc pl-5 mt-2 text-sm">
+                <li>Interactive UI/UX prototyping</li>
+                <li>Developed high-performance WordPress websites</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Education Section */}
+        <section id="education" className="my-16">
+          <h2 className="text-4xl font-bold text-center mb-12">Education</h2>
+          <div className="space-y-6">
+            <div className="p-6 bg-[#112240] rounded shadow">
+              <h3 className="text-2xl font-semibold">Master’s in Big Data Management</h3>
+              <p className="mt-2 text-sm text-gray-400">Université Badji Mokhtar (2024 - 2026)</p>
+              <p className="mt-2 text-sm">Skills Gained: Python, Data Analysis, Machine Learning</p>
+            </div>
+            <div className="p-6 bg-[#112240] rounded shadow">
+              <h3 className="text-2xl font-semibold">Bachelor’s in Computer Science</h3>
+              <p className="mt-2 text-sm text-gray-400">Université Badji Mokhtar (2021 - 2024)</p>
+              <p className="mt-2 text-sm">Relevant Courses: Databases, Algorithms, Data Structures</p>
             </div>
           </div>
         </section>
@@ -148,36 +176,38 @@ export default function Home() {
         <section id="contact" className="my-16">
           <h2 className="text-4xl font-bold text-center mb-12">Contact</h2>
           <form className="max-w-md mx-auto space-y-6">
-            <input type="text" placeholder="Name" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" required />
-            <input type="email" placeholder="Email" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" required />
-            <textarea placeholder="Message" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-400" rows="5" required></textarea>
-            <button type="submit" className="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition">
+            <input type="text" placeholder="Name" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#64ffda]" required />
+            <input type="email" placeholder="Email" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#64ffda]" required />
+            <textarea placeholder="Message" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#64ffda]" rows="5" required></textarea>
+            <button type="submit" className="w-full bg-[#64ffda] text-[#0a192f] py-3 rounded hover:bg-teal-400 transition">
               Send Message
             </button>
           </form>
         </section>
 
-        {/* About Me Section */}
+        {/* About Section */}
         <section id="about" className="my-16">
           <h2 className="text-4xl font-bold text-center mb-12">About Me</h2>
           <p className="max-w-3xl mx-auto text-lg text-center">
             I love development because it allows me to solve real-world problems and innovate with technology.
-            Every project is a new challenge that fuels my passion for learning and continuous improvement.
+            My technical philosophy is rooted in a passion for efficiency and scalability—optimizing workflows and crafting robust solutions.
+            Key achievements include optimizing databases to boost performance by 40% and creating secure, scalable APIs.
+            Looking for a skilled developer? Let’s connect!
           </p>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="bg-white py-8 shadow-inner mt-16">
+      <footer className="bg-[#112240] py-8 shadow-inner mt-16">
         <div className="max-w-5xl mx-auto text-center space-y-2">
           <p>
-            Email: <a href="mailto:ishakkorichi09@gmail.com" className="text-blue-500 hover:underline">ishakkorichi09@gmail.com</a>
+            Email: <a href="mailto:ishakkorichi09@gmail.com" className="text-[#64ffda] hover:underline">ishakkorichi09@gmail.com</a>
           </p>
           <p>
-            GitHub: <a href="https://github.com/Chrestiondior77" className="text-blue-500 hover:underline">github.com/Chrestiondior77</a>
+            GitHub: <a href="https://github.com/Chrestiondior77" className="text-[#64ffda] hover:underline">github.com/Chrestiondior77</a>
           </p>
           <p>
-            LinkedIn: <a href="https://linkedin.com/in/ishak-korichi-77a398321" className="text-blue-500 hover:underline">linkedin.com/in/ishak-korichi-77a398321</a>
+            LinkedIn: <a href="https://linkedin.com/in/ishak-korichi-77a398321" className="text-[#64ffda] hover:underline">linkedin.com/in/ishak-korichi-77a398321</a>
           </p>
           <p>WhatsApp: +213541945025</p>
         </div>
