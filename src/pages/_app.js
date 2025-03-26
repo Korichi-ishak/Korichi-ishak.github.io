@@ -1,5 +1,19 @@
-import "@/styles/globals.css";
+import { AnimatePresence } from 'framer-motion';
+import PageTransition from '../components/PageTransition';
+import FloatingIcons from '../components/FloatingIcons';
+import '../styles/globals.css';
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps, router }) {
+  return (
+    <>
+      <FloatingIcons />
+      <AnimatePresence mode="wait">
+        <PageTransition key={router.route}>
+          <Component {...pageProps} />
+        </PageTransition>
+      </AnimatePresence>
+    </>
+  );
 }
+
+export default MyApp;
