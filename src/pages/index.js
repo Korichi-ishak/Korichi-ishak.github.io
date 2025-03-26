@@ -1,5 +1,6 @@
 import ProjectCard from "../components/ProjectCard";
 import { Geist, Geist_Mono } from "next/font/google";
+import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa"; // Import icons
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +34,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-gray-800 p-8 sm:p-20">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white text-gray-800 p-8 sm:p-20"> {/* Added gradient background */}
       {/* Navigation Menu */}
       <nav className="fixed top-0 left-0 w-full bg-white border-b border-gray-200 backdrop-blur-sm shadow z-10">
         <div className="max-w-5xl mx-auto flex justify-between items-center p-4">
@@ -51,7 +52,9 @@ export default function Home() {
       <main className="pt-20 max-w-5xl mx-auto">
         {/* Header/Introduction Section */}
         <section id="introduction" className="text-center my-16">
-          <h1 className="text-5xl font-extrabold">Ishak Korichi</h1>
+          <h1 className="text-5xl font-extrabold bg-gradient-to-r from-blue-500 to-teal-400 text-transparent bg-clip-text"> {/* Gradient text */}
+            Ishak Korichi
+          </h1>
           <h2 className="text-2xl text-gray-600 mt-4">
             Backend Developer | Data Analyst | Node.js, React & MongoDB Expert
           </h2>
@@ -87,7 +90,7 @@ export default function Home() {
         <section id="skills" className="my-16">
           <h2 className="text-4xl font-bold text-center mb-12">Skills</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
+            <div className="p-6 bg-gradient-to-r from-gray-100 to-gray-200 rounded shadow hover:shadow-lg transition"> {/* Gradient background */}
               <h3 className="text-2xl font-semibold mb-4">Languages</h3>
               <ul className="list-disc pl-5 space-y-2">
                 <li>JavaScript</li>
@@ -172,44 +175,27 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contact Form Section */}
+        {/* Contact Section */}
         <section id="contact" className="my-16">
           <h2 className="text-4xl font-bold text-center mb-12">Contact</h2>
-          <form className="max-w-md mx-auto space-y-6">
-            <input type="text" placeholder="Name" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-300" required />
-            <input type="email" placeholder="Email" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-300" required />
-            <textarea placeholder="Message" className="w-full border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-300" rows="5" required></textarea>
-            <button type="submit" className="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition">
-              Send Message
-            </button>
-          </form>
-        </section>
-
-        {/* About Section */}
-        <section id="about" className="my-16">
-          <h2 className="text-4xl font-bold text-center mb-12">About Me</h2>
-          <p className="max-w-3xl mx-auto text-lg text-center">
-            I love development because it allows me to solve real-world problems and innovate with technology.
-            My technical philosophy is rooted in a passion for efficiency and scalability—optimizing workflows and crafting robust solutions.
-            Key achievements include optimizing databases to boost performance by 40% and creating secure, scalable APIs.
-            Looking for a skilled developer? Let’s connect!
-          </p>
+          <div className="flex justify-center space-x-6">
+            <a href="https://linkedin.com/in/ishak-korichi-77a398321" target="_blank" rel="noopener noreferrer" className="text-blue-500 text-4xl hover:text-blue-700 transition">
+              <FaLinkedin />
+            </a>
+            <a href="https://github.com/Chrestiondior77" target="_blank" rel="noopener noreferrer" className="text-gray-800 text-4xl hover:text-gray-600 transition">
+              <FaGithub />
+            </a>
+            <a href="https://wa.me/213541945025" target="_blank" rel="noopener noreferrer" className="text-green-500 text-4xl hover:text-green-700 transition">
+              <FaWhatsapp />
+            </a>
+          </div>
         </section>
       </main>
 
       {/* Footer */}
       <footer className="bg-gray-800 py-8 shadow-inner mt-16 text-white">
         <div className="max-w-5xl mx-auto text-center space-y-2">
-          <p>
-            Email: <a href="mailto:ishakkorichi09@gmail.com" className="text-blue-300 hover:underline">ishakkorichi09@gmail.com</a>
-          </p>
-          <p>
-            GitHub: <a href="https://github.com/Chrestiondior77" className="text-blue-300 hover:underline">github.com/Chrestiondior77</a>
-          </p>
-          <p>
-            LinkedIn: <a href="https://linkedin.com/in/ishak-korichi-77a398321" className="text-blue-300 hover:underline">linkedin.com/in/ishak-korichi-77a398321</a>
-          </p>
-          <p>WhatsApp: +213541945025</p>
+          <p>© 2023 Ishak Korichi. All rights reserved.</p>
         </div>
       </footer>
     </div>
