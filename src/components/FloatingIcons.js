@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, SiMongodb, SiFirebase } from 'react-icons/fa';
+import { FaReact, FaNodeJs } from 'react-icons/fa';
+import { SiMongodb, SiFirebase } from 'react-icons/si';
 // Additional icons can be added here
 const icons = [
   { icon: <FaReact className="text-blue-400" />, size: 32 },
