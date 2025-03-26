@@ -3,15 +3,6 @@ import FloatingIcons from '../components/FloatingIcons';
 import PageTransition from '../components/PageTransition';
 import { TypeAnimation } from 'react-type-animation';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export default function Home() {
   const wpProjects = [
     { title: "EAG Video Editor", description: "Elegant video editing website powered by WordPress.", technologies: ["WordPress", "UI/UX Design"], link: "https://eagvideoeditor.com" },
@@ -33,9 +24,6 @@ export default function Home() {
     { title: "Clinical", description: "Medical mobile application.", technologies: ["React Native"], link: "https://example.com/clinical" },
     { title: "Astrolabs", description: "Mental health & personal assistance app.", technologies: ["Flutter"], link: "https://example.com/astrolabs" },
   ];
-
-  
-
 
   return (
     <PageTransition>
