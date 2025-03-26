@@ -13,8 +13,16 @@ const geistMono = Geist_Mono({
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      {/* Navigation Menu */}
+      <nav className="row-start-1 w-full flex justify-center gap-8 bg-gray-100 p-4 fixed top-0 z-10">
+        <a href="#about" className="hover:underline">À propos de moi</a>
+        <a href="#projects" className="hover:underline">Mes projets</a>
+        <a href="#education" className="hover:underline">Mes formations</a>
+        <a href="#contact" className="hover:underline">Contact</a>
+      </nav>
+
+      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start mt-16">
         <Image
           className="dark:invert"
           src="./next.svg"
@@ -60,7 +68,44 @@ export default function Home() {
             Read our docs
           </a>
         </div>
+
+        {/* À propos de moi Section */}
+        <section id="about" className="w-full mt-16">
+          <h2 className="text-2xl font-bold mb-4">À propos de moi</h2>
+          <p className="text-base">
+            Bonjour, je suis un développeur passionné par la création de sites web modernes et performants.
+          </p>
+        </section>
+
+        {/* Mes projets Section */}
+        <section id="projects" className="w-full mt-16">
+          <h2 className="text-2xl font-bold mb-4">Mes projets</h2>
+          <ul className="list-disc pl-5">
+            <li>Projet 1: Description du projet 1.</li>
+            <li>Projet 2: Description du projet 2.</li>
+            <li>Projet 3: Description du projet 3.</li>
+          </ul>
+        </section>
+
+        {/* Mes formations Section */}
+        <section id="education" className="w-full mt-16">
+          <h2 className="text-2xl font-bold mb-4">Mes formations</h2>
+          <ul className="list-disc pl-5">
+            <li>Formation 1: Description de la formation 1.</li>
+            <li>Formation 2: Description de la formation 2.</li>
+            <li>Formation 3: Description de la formation 3.</li>
+          </ul>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="w-full mt-16">
+          <h2 className="text-2xl font-bold mb-4">Contact</h2>
+          <p className="text-base">
+            Vous pouvez me contacter à l'adresse suivante : <a href="mailto:example@example.com" className="text-blue-500 hover:underline">example@example.com</a>
+          </p>
+        </section>
       </main>
+
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
