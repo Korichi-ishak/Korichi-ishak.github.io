@@ -1,261 +1,122 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a;
   --primary: #0f1624;
-  --secondary: #64ffda;
-  --accent: #0fe9f9;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --secondary: #3b82f6;
+  --accent: #6366f1;
+  --card: #ffffff;
+  --card-foreground: #1e293b;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --foreground: #f8fafc;
+    --card: #1e293b;
+    --card-foreground: #f8fafc;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  /* Page load entrance animation */
-  animation: fade-in 1s ease-out;
+  font-family: var(--font-geist-sans);
+  line-height: 1.6;
 }
 
-/* New Layout Grid */
-.layout-grid {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 1rem;
-  min-height: 100vh;
+/* Modern glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.sidebar {
-  position: sticky;
-  top: 0;
-  padding: 1rem;
+/* Modern card styling */
+.card {
+  background: var(--card);
+  color: var(--card-foreground);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+              0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.main-content {
-  overflow-y: auto;
-  padding: 1rem;
+.card:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* Global fixes */
-h2 { 
-  color: #64ffda; 
-  margin-bottom: 1.5rem;
+/* Modern button styling */
+.btn {
+  background: linear-gradient(to right, var(--secondary), var(--accent));
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Enhanced Card Styling */
-.card { 
-  background: #ffffff; 
-  border-left: 4px solid var(--secondary);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-.card:hover { 
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+/* Modern section styling */
+.section {
+  padding: 5rem 0;
 }
 
-/* ProfileCard Component */
-.profile-card img {
-  border-radius: 50%; /* Circular image */
-  display: block;
-  margin: 0 auto;
-}
-
-.profile-card .name {
-  color: teal;
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  background: linear-gradient(to right, var(--secondary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   text-align: center;
 }
 
-.profile-card .contact-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
-/* EducationCard Component */
-.education-card .degree { 
-  font-weight: bold; 
-}
-
-.education-card .details { 
-  color: gray; 
-  margin-bottom: 0.5rem; 
-}
-
-.education-card .skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-/* Animations */
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slide-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Entrance animation class for section elements */
-.fade-slide {
-  animation: slide-up 0.8s ease-out forwards;
-}
-
-/* Button hover: Color pulse effect */
-button:hover {
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.1); }
-}
-
-/* Mobile Optimization */
-@media (max-width: 768px) {
-  .layout-grid {
-    display: block; /* Stack columns vertically */
-  }
-  body {
-    font-size: 14px; /* Reduced font size */
-  }
-  /* Hide full contact form, show contact button instead */
-  .contact-full {
-    display: none;
-  }
-  .contact-button {
-    display: block;
-  }
-}
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer utilities {
-  .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  }
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  .hover-scale {
-    @apply transition-transform duration-300 hover:scale-105;
-  }
-  /* For mobile, restrict animations: */
-  @media (hover: none) {
-    .hover-scale {
-      transition: none;
-    }
-  }
-}
-
-/* Header and Navigation Styles */
-.header {
-  background: var(--primary);
-  color: #fff;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  animation: fade-in 1s ease-out;
-}
-.header .menu a {
-  color: #fff;
-  margin: 0 1rem;
+/* Active nav link style */
+.active-nav-link {
+  color: var(--secondary);
   position: relative;
-  transition: color 0.3s ease;
 }
-.header .menu a::after {
+
+.active-nav-link::after {
   content: "";
   position: absolute;
   bottom: -4px;
   left: 0;
-  width: 0%;
+  width: 100%;
   height: 2px;
   background: var(--secondary);
-  transition: width 0.3s ease;
-}
-.header .menu a:hover {
-  color: var(--secondary);
-}
-.header .menu a:hover::after {
-  width: 100%;
 }
 
-/* Contact Icons (LinkedIn, GitHub, WhatsApp) */
-.contact-icons {
-  display: flex;
-  gap: 1rem;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
-.contact-icons a {
-  color: var(--secondary);
-  font-size: 1.5rem;
-  transition: transform 0.3s ease;
-}
-.contact-icons a:hover {
-  transform: translateY(-5px);
-}
-/* Example of clickable icon markup:
-   <div class="contact-icons">
-     <a href="https://linkedin.com/in/yourprofile" target="_blank"><!-- LinkedIn Icon --></a>
-     <a href="https://github.com/yourprofile" target="_blank"><!-- GitHub Icon --></a>
-     <a href="https://wa.me/yourNumber" target="_blank"><!-- WhatsApp Icon --></a>
-   </div>
-*/
 
-/* Button Styling and Animation */
-button {
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
   background: var(--secondary);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  color: var(--primary);
-  font-weight: bold;
   border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
 }
-button:hover {
+
+::-webkit-scrollbar-thumb:hover {
   background: var(--accent);
-  transform: scale(1.05);
-}
-
-/* Forum/Form Styling */
-.forum {
-  background: #112240;
-  padding: 1.5rem;
-  border-radius: 4px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: box-shadow 0.3s ease;
-}
-.forum:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-/* Navigation Animation */
-.nav-animation {
-  transition: all 0.3s ease;
-}
-.nav-animation-enter {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-.nav-animation-enter-active {
-  opacity: 1;
-  transform: translateY(0);
 }

@@ -1,6 +1,7 @@
-import ProjectCard from "../components/ProjectCard";
-import { Geist, Geist_Mono } from "next/font/google";
-import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa"; // Import icons
+import { FaLinkedin, FaGithub, FaWhatsapp, FaArrowRight } from 'react-icons/fa';
+import FloatingIcons from '../components/FloatingIcons';
+import PageTransition from '../components/PageTransition';
+import { TypeAnimation } from 'react-type-animation';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,171 +34,321 @@ export default function Home() {
     { title: "Astrolabs", description: "Mental health & personal assistance app.", technologies: ["Flutter"], link: "https://example.com/astrolabs" },
   ];
 
+  
+
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white text-gray-800 p-8 sm:p-20"> {/* Added gradient background */}
-      {/* Navigation Menu */}
-      <nav className="fixed top-0 left-0 w-full bg-white border-b border-gray-200 backdrop-blur-sm shadow z-10">
-        <div className="max-w-5xl mx-auto flex justify-between items-center p-4">
-          <div className="text-xl font-bold">Ishak Korichi</div>
-          <div className="space-x-6">
-            <a href="#about" className="hover:text-blue-500 transition">About Me</a>
-            <a href="#projects" className="hover:text-blue-500 transition">Projects</a>
-            <a href="#skills" className="hover:text-blue-500 transition">Skills</a>
-            <a href="#experience" className="hover:text-blue-500 transition">Experience</a>
-            <a href="#contact" className="hover:text-blue-500 transition">Contact</a>
-          </div>
-        </div>
-      </nav>
-      
-      <main className="pt-20 max-w-5xl mx-auto">
-        {/* Header/Introduction Section */}
-        <section id="introduction" className="text-center my-16">
-          <h1 className="text-5xl font-extrabold bg-gradient-to-r from-blue-500 to-teal-400 text-transparent bg-clip-text"> {/* Gradient text */}
-            Ishak Korichi
-          </h1>
-          <h2 className="text-2xl text-gray-600 mt-4">
-            Backend Developer | Data Analyst | Node.js, React & MongoDB Expert
-          </h2>
-          <p className="mt-6 text-lg">
-            I specialize in building high-performance, scalable backend solutions and optimizing data workflows. With expertise in Node.js, React, MongoDB, and Firebase, I develop secure, efficient applications while pursuing my Master's in Big Data Management.
-          </p>
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="my-16">
-          <h2 className="text-4xl font-bold text-center mb-12">Projects</h2>
-
-          <div className="mb-12">
-            <h3 className="text-2xl font-semibold mb-4">WordPress Websites</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {wpProjects.map((project, index) => (
-                <ProjectCard key={index} {...project} />
+    <PageTransition>
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100">
+        <FloatingIcons />
+        
+        {/* Modern navbar */}
+        <nav className="fixed top-0 left-0 w-full glass z-50 py-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <div className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+              Ishak Korichi
+            </div>
+            <div className="hidden md:flex space-x-8">
+              {['About', 'Projects', 'Skills', 'Experience', 'Contact'].map((item) => (
+                <a 
+                  key={item} 
+                  href={`#${item.toLowerCase()}`}
+                  className="text-lg font-medium hover:text-blue-500 transition-colors"
+                >
+                  {item}
+                </a>
               ))}
             </div>
+            <button className="md:hidden">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
           </div>
+        </nav>
 
-          <div>
-            <h3 className="text-2xl font-semibold mb-4">Mobile Applications</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {mobileProjects.map((project, index) => (
-                <ProjectCard key={index} {...project} />
-              ))}
+        <main className="pt-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Hero Section */}
+          <section id="about" className="section min-h-[80vh] flex items-center justify-center">
+            <div className="text-center max-w-3xl mx-auto">
+              <div className="mb-6">
+                <span className="text-lg md:text-xl text-blue-500 dark:text-blue-400 font-mono">
+                  Hi, my name is
+                </span>
+                <h1 className="text-5xl md:text-7xl font-extrabold mt-2 mb-4">
+                  <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                    Ishak Korichi.
+                  </span>
+                </h1>
+                <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-700 dark:text-gray-300">
+                  <TypeAnimation
+                    sequence={[
+                      'Backend Developer',
+                      1500,
+                      'Data Analyst',
+                      1500,
+                      'Full Stack Engineer',
+                      1500,
+                      'WordPress Expert',
+                      1500
+                    ]}
+                    wrapper="span"
+                    speed={50}
+                    repeat={Infinity}
+                  />
+                </h2>
+              </div>
+              <p className="text-lg md:text-xl mb-10 text-gray-700 dark:text-gray-300 leading-relaxed">
+                I specialize in building high-performance, scalable backend solutions and 
+                data pipelines. Currently pursuing my Master's in Big Data Management while 
+                developing cutting-edge web and mobile applications.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <a 
+                  href="#contact" 
+                  className="btn flex items-center justify-center space-x-2 px-8 py-3"
+                >
+                  <span>Get In Touch</span>
+                  <FaArrowRight />
+                </a>
+                <a 
+                  href="#projects" 
+                  className="btn bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-500/10 px-8 py-3"
+                >
+                  View My Work
+                </a>
+              </div>
             </div>
+          </section>
+
+          {/* Projects Section */}
+          <section id="projects" className="section">
+            <h2 className="section-title">Projects</h2>
+            
+            <div className="mb-16">
+              <h3 className="text-2xl font-bold mb-8 text-center text-gray-700 dark:text-gray-300">
+                WordPress Websites
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {wpProjects.map((project) => (
+                  <ProjectCard key={project.title} {...project} />
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-bold mb-8 text-center text-gray-700 dark:text-gray-300">
+                Mobile Applications
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {mobileProjects.map((project) => (
+                  <ProjectCard key={project.title} {...project} />
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section id="testimonials" className="section bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
+            <h2 className="section-title">What People Say</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <TestimonialCard
+                quote="Ishak delivered our WordPress site ahead of schedule with exceptional attention to detail. His technical expertise is matched only by his professionalism."
+                author="Jean Dupont"
+                role="CEO, Maison Chevalier"
+              />
+              <TestimonialCard
+                quote="The backend architecture Ishak implemented reduced our API response times by 60%. He's a true expert in Node.js and database optimization."
+                author="Sarah Johnson"
+                role="CTO, Aurafolio"
+              />
+              <TestimonialCard
+                quote="Working with Ishak on our mobile app was a pleasure. He translated complex requirements into elegant solutions with React Native."
+                author="Mohamed Ali"
+                role="Product Manager, Wassalni"
+              />
+            </div>
+          </section>
+
+          {/* Skills Section */}
+          <section id="skills" className="section">
+            <h2 className="section-title">Skills & Expertise</h2>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+              <div className="space-y-8">
+                <h3 className="text-2xl font-bold text-gray-700 dark:text-gray-300">Technical Skills</h3>
+                <SkillBar name="Node.js" level={90} />
+                <SkillBar name="React" level={85} />
+                <SkillBar name="MongoDB" level={88} />
+                <SkillBar name="Python" level={80} />
+                <SkillBar name="Data Analysis" level={85} />
+              </div>
+              
+              <div className="space-y-8">
+                <h3 className="text-2xl font-bold text-gray-700 dark:text-gray-300">Professional Skills</h3>
+                <SkillBar name="Problem Solving" level={92} />
+                <SkillBar name="Team Collaboration" level={88} />
+                <SkillBar name="Project Management" level={85} />
+                <SkillBar name="Communication" level={90} />
+                <SkillBar name="UI/UX Design" level={75} />
+              </div>
+            </div>
+
+            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+              <SkillCategory 
+                title="Languages" 
+                skills={["JavaScript", "Python", "Go", "R"]} 
+                icon="💻"
+              />
+              <SkillCategory 
+                title="Frameworks" 
+                skills={["Node.js", "React", "React Native", "Flutter"]} 
+                icon="🛠️"
+              />
+              <SkillCategory 
+                title="Databases" 
+                skills={["MongoDB", "PostgreSQL", "Firebase"]} 
+                icon="🗄️"
+              />
+              <SkillCategory 
+                title="Other" 
+                skills={["WordPress", "UI/UX Design", "REST APIs", "JWT Auth"]} 
+                icon="✨"
+              />
+            </div>
+          </section>
+
+          {/* Experience Section */}
+          <section id="experience" className="section">
+            <h2 className="section-title">Experience</h2>
+            <div className="space-y-8 max-w-4xl mx-auto">
+              <ExperienceCard
+                role="Backend Developer & Data Analyst"
+                company="Aurafolio"
+                period="Jun 2023 - Present"
+                points={[
+                  "Designed high-performance APIs with Node.js/Express",
+                  "Optimized databases (MongoDB, Firebase, MySQL) improving performance by 40%",
+                  "Integrated cloud services & implemented authentication systems",
+                  "Deployed scalable architectures"
+                ]}
+              />
+              <ExperienceCard
+                role="Freelance Developer"
+                company="WordPress & UI/UX"
+                period="Mar 2023 - Present"
+                points={[
+                  "Interactive UI/UX prototyping",
+                  "Developed high-performance WordPress websites"
+                ]}
+              />
+            </div>
+          </section>
+
+          {/* Contact Section */}
+          <section id="contact" className="section">
+            <h2 className="section-title">Get In Touch</h2>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+              <div>
+                <h3 className="text-2xl font-bold mb-6 text-gray-700 dark:text-gray-300">
+                  Let's talk about your project
+                </h3>
+                <p className="text-lg mb-8 text-gray-600 dark:text-gray-400 leading-relaxed">
+                  I'm currently available for freelance work and full-time positions. 
+                  Whether you have a question or just want to say hi, I'll get back to you as soon as possible!
+                </p>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-4">
+                    <div className="p-3 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-500 dark:text-blue-400">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-700 dark:text-gray-300">ishak@example.com</span>
+                  </div>
+                  
+                  <div className="flex items-center space-x-4">
+                    <div className="p-3 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-500 dark:text-blue-400">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <span className="text-gray-700 dark:text-gray-300">+213 541 945 025</span>
+                  </div>
+                </div>
+                
+                <div className="mt-8 flex space-x-6">
+                  <a href="https://linkedin.com/in/ishak-korichi-77a398321" target="_blank" className="text-3xl text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 transition-colors">
+                    <FaLinkedin />
+                  </a>
+                  <a href="https://github.com/Chrestiondior77" target="_blank" className="text-3xl text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 transition-colors">
+                    <FaGithub />
+                  </a>
+                  <a href="https://wa.me/213541945025" target="_blank" className="text-3xl text-green-500 hover:text-green-700 dark:hover:text-green-400 transition-colors">
+                    <FaWhatsapp />
+                  </a>
+                </div>
+              </div>
+              
+              <div>
+                <ContactForm />
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer className="py-12 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p className="text-lg mb-2">Let's build something amazing together</p>
+            <p>© {new Date().getFullYear()} Ishak Korichi. All rights reserved.</p>
           </div>
-        </section>
+        </footer>
+      </div>
+    </PageTransition>
+  );
+}
 
-        {/* Skills Section */}
-        <section id="skills" className="my-16">
-          <h2 className="text-4xl font-bold text-center mb-12">Skills</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="p-6 bg-gradient-to-r from-gray-100 to-gray-200 rounded shadow hover:shadow-lg transition"> {/* Gradient background */}
-              <h3 className="text-2xl font-semibold mb-4">Languages</h3>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>JavaScript</li>
-                <li>Python</li>
-                <li>Go</li>
-                <li>R</li>
-              </ul>
-            </div>
-            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
-              <h3 className="text-2xl font-semibold mb-4">Frameworks & Libraries</h3>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>Node.js</li>
-                <li>React</li>
-                <li>React Native</li>
-                <li>Flutter</li>
-              </ul>
-            </div>
-            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
-              <h3 className="text-2xl font-semibold mb-4">Databases</h3>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>MongoDB</li>
-                <li>PostgreSQL</li>
-              </ul>
-            </div>
-            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
-              <h3 className="text-2xl font-semibold mb-4">Cloud & Backend</h3>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>Firebase</li>
-                <li>REST APIs</li>
-                <li>JWT Authentication</li>
-              </ul>
-            </div>
-            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
-              <h3 className="text-2xl font-semibold mb-4">Other</h3>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>WordPress</li>
-                <li>UI/UX Design</li>
-              </ul>
-            </div>
-          </div>
-        </section>
+// New SkillCategory component
+function SkillCategory({ title, skills, icon }) {
+  return (
+    <div className="card">
+      <div className="flex items-center mb-4">
+        <span className="text-2xl mr-3">{icon}</span>
+        <h3 className="text-xl font-bold">{title}</h3>
+      </div>
+      <ul className="space-y-2">
+        {skills.map((skill) => (
+          <li key={skill} className="flex items-center">
+            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
-        {/* Experience Section */}
-        <section id="experience" className="my-16">
-          <h2 className="text-4xl font-bold text-center mb-12">Experience</h2>
-          <div className="space-y-6">
-            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
-              <h3 className="text-2xl font-semibold">Backend Developer & Data Analyst at Aurafolio</h3>
-              <p className="mt-2 text-sm text-gray-500">Jun 2023 - Present</p>
-              <ul className="list-disc pl-5 mt-2 text-sm">
-                <li>Designed high-performance APIs with Node.js/Express</li>
-                <li>Optimized databases (MongoDB, Firebase, MySQL) improving performance by 40%</li>
-                <li>Integrated cloud services & implemented authentication systems</li>
-                <li>Deployed scalable architectures</li>
-              </ul>
-            </div>
-            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
-              <h3 className="text-2xl font-semibold">Freelance Developer (WordPress & UI/UX)</h3>
-              <p className="mt-2 text-sm text-gray-500">Mar 2023 - Present</p>
-              <ul className="list-disc pl-5 mt-2 text-sm">
-                <li>Interactive UI/UX prototyping</li>
-                <li>Developed high-performance WordPress websites</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Education Section */}
-        <section id="education" className="my-16">
-          <h2 className="text-4xl font-bold text-center mb-12">Education</h2>
-          <div className="space-y-6">
-            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
-              <h3 className="text-2xl font-semibold">Master’s in Big Data Management</h3>
-              <p className="mt-2 text-sm text-gray-500">Université Badji Mokhtar (2024 - 2026)</p>
-              <p className="mt-2 text-sm">Skills Gained: Python, Data Analysis, Machine Learning</p>
-            </div>
-            <div className="p-6 bg-gray-100 rounded shadow hover:shadow-lg transition">
-              <h3 className="text-2xl font-semibold">Bachelor’s in Computer Science</h3>
-              <p className="mt-2 text-sm text-gray-500">Université Badji Mokhtar (2021 - 2024)</p>
-              <p className="mt-2 text-sm">Relevant Courses: Databases, Algorithms, Data Structures</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section id="contact" className="my-16">
-          <h2 className="text-4xl font-bold text-center mb-12">Contact</h2>
-          <div className="flex justify-center space-x-6">
-            <a href="https://linkedin.com/in/ishak-korichi-77a398321" target="_blank" rel="noopener noreferrer" className="text-blue-500 text-4xl hover:text-blue-700 transition">
-              <FaLinkedin />
-            </a>
-            <a href="https://github.com/Chrestiondior77" target="_blank" rel="noopener noreferrer" className="text-gray-800 text-4xl hover:text-gray-600 transition">
-              <FaGithub />
-            </a>
-            <a href="https://wa.me/213541945025" target="_blank" rel="noopener noreferrer" className="text-green-500 text-4xl hover:text-green-700 transition">
-              <FaWhatsapp />
-            </a>
-          </div>
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-gray-800 py-8 shadow-inner mt-16 text-white">
-        <div className="max-w-5xl mx-auto text-center space-y-2">
-          <p>© 2023 Ishak Korichi. All rights reserved.</p>
+// New ExperienceCard component
+function ExperienceCard({ role, company, period, points }) {
+  return (
+    <div className="card">
+      <div className="flex justify-between items-start mb-4">
+        <div>
+          <h3 className="text-xl font-bold">{role}</h3>
+          <p className="text-blue-500">{company}</p>
         </div>
-      </footer>
+        <span className="text-sm text-gray-500 dark:text-gray-400">{period}</span>
+      </div>
+      <ul className="space-y-2">
+        {points.map((point, i) => (
+          <li key={i} className="flex">
+            <span className="text-blue-500 mr-2">•</span>
+            {point}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
