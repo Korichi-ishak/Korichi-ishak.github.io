@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { 
   CodeIcon, 
   ExternalLinkIcon, 
@@ -15,6 +16,34 @@ export default function ProjectCard({ title, description, technologies, link }) 
         </a>
       </div>
       <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
+      {/* Conditionally add images for selected projects */}
+      {title.toLowerCase() === "astrolabs" && (
+        <Image 
+          src="/astrolabs.jpg" 
+          alt="Astrolabs" 
+          width={400} 
+          height={250} 
+          className="rounded-lg mt-4"
+        />
+      )}
+      {title.toLowerCase() === "clinical" && (
+        <Image 
+          src="/clinicall.jpg" 
+          alt="Clinical" 
+          width={400} 
+          height={250} 
+          className="rounded-lg mt-4"
+        />
+      )}
+      {title.toLowerCase() === "wassalni" && (
+        <Image 
+          src="/wassalni.jpg" 
+          alt="Wassalni" 
+          width={400} 
+          height={250} 
+          className="rounded-lg mt-4"
+        />
+      )}
       <p className="text-gray-400 mb-4 text-sm">{description}</p>
       <div className="flex items-center text-sm text-gray-500">
         <PaletteIcon className="w-4 h-4 mr-2 text-[#CAFA43]" />
