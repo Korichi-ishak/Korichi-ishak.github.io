@@ -1,4 +1,6 @@
 import ProjectCard from "../components/ProjectCard";
+import Link from "next/link";
+import { useState } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import { 
   HomeIcon, 
@@ -9,8 +11,10 @@ import {
   LinkedinIcon, 
   GithubIcon, 
   SendIcon, 
-  PhoneIcon 
+  PhoneIcon ,
+  MenuIcon, XIcon 
 } from "lucide-react";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,6 +24,7 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
 
 export default function Home() {
   const wpProjects = [
@@ -38,10 +43,12 @@ export default function Home() {
   ];
 
   const mobileProjects = [
-    { title: "Wassalni", description: "Carpooling mobile app.", technologies: ["React Native", "Flutter"], link: "https://example.com/wassalni" },
-    { title: "Clinical", description: "Medical mobile application.", technologies: ["React Native"], link: "https://example.com/clinical" },
-    { title: "Astrolabs", description: "Mental health & personal assistance app.", technologies: ["Flutter"], link: "https://example.com/astrolabs" },
+    { title: "Wassalni", description: "Carpooling mobile app.", technologies: ["React Native", "Node.js","MongoDB"], link: "https://example.com/wassalni" },
+    { title: "Clinical", description: "Medical mobile application.", technologies: ["React Native","Node.js","MongoDB"], link: "https://example.com/clinical" },
+    { title: "Astrolabs", description: "Mental health & personal assistance app.", technologies: ["React Native","Node.js","MongoDB","Firebase Firestore"], link: "https://example.com/astrolabs" },
   ];
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="dark min-h-screen bg-[#151515] text-white">
@@ -49,25 +56,30 @@ export default function Home() {
       <nav className="fixed top-0 left-0 w-full bg-[#222224]/80 backdrop-blur-md z-50 shadow-lg">
         <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
           <div className="text-2xl font-bold text-[#CAFA43]">IK</div>
-          <div className="flex items-center space-x-6">
-            <a href="#about" className="group flex items-center text-gray-300 hover:text-[#CAFA43] transition">
-              <UserIcon className="w-5 h-5 mr-2 group-hover:rotate-6 transition" />
-              About
-            </a>
-            <a href="#projects" className="group flex items-center text-gray-300 hover:text-[#CAFA43] transition">
-              <CodeIcon className="w-5 h-5 mr-2 group-hover:rotate-6 transition" />
-              Projects
-            </a>
-            <a href="#skills" className="group flex items-center text-gray-300 hover:text-[#CAFA43] transition">
-              <BriefcaseIcon className="w-5 h-5 mr-2 group-hover:rotate-6 transition" />
-              Skills
-            </a>
-            <a href="#contact" className="group flex items-center text-gray-300 hover:text-[#CAFA43] transition">
-              <MailIcon className="w-5 h-5 mr-2 group-hover:rotate-6 transition" />
-              Contact
-            </a>
+          
+          {/* Mobile Menu Button */}
+          <button className="md:hidden text-gray-300" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
+          </button>
+          
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-6">
+            <NavItem href="#about" Icon={UserIcon} text="About" />
+            <NavItem href="#projects" Icon={CodeIcon} text="Projects" />
+            <NavItem href="#skills" Icon={BriefcaseIcon} text="Skills" />
+            <NavItem href="#contact" Icon={MailIcon} text="Contact" />
           </div>
         </div>
+        
+        {/* Mobile Menu */}
+        {isOpen && (  
+          <div className="md:hidden bg-[#222224] flex flex-col items-center space-y-4 py-4">
+            <NavItem href="#about" Icon={UserIcon} text="About" onClick={() => setIsOpen(false)} />
+            <NavItem href="#projects" Icon={CodeIcon} text="Projects" onClick={() => setIsOpen(false)} />
+            <NavItem href="#skills" Icon={BriefcaseIcon} text="Skills" onClick={() => setIsOpen(false)} />
+            <NavItem href="#contact" Icon={MailIcon} text="Contact" onClick={() => setIsOpen(false)} />
+          </div>
+        )}
       </nav>
 
       <main className="pt-24 max-w-6xl mx-auto px-4">
@@ -115,17 +127,17 @@ export default function Home() {
             {[
               { 
                 title: "Languages", 
-                items: ["JavaScript", "Python", "Go", "R"],
+                items: ["JavaScript", "Python", "SQL", "R","PHP","Dart","HTML","CSS","C","Java","Kotlin"],
                 icon: "💻"
               },
               { 
                 title: "Frameworks & Libraries", 
-                items: ["Node.js", "React", "React Native", "Flutter"],
+                items: ["Node.js", "React", "React Native", "Flutter","Next.js","Laravel","Flutter"],
                 icon: "🚀"
               },
               { 
                 title: "Databases", 
-                items: ["MongoDB", "PostgreSQL"],
+                items: ["MongoDB", "PostgreSQL", "MySQL", "Firebase Firestore"],
                 icon: "📊"
               },
               { 
@@ -135,7 +147,7 @@ export default function Home() {
               },
               { 
                 title: "Other", 
-                items: ["WordPress", "UI/UX Design"],
+                items: ["WordPress", "UI/UX Design","Figma","Adobe XD"],
                 icon: "🎨"
               }
             ].map((category, index) => (
@@ -252,10 +264,9 @@ export default function Home() {
             <span className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-20 h-1 bg-[#CAFA43]"></span>
           </h2>
           <p className="max-w-3xl mx-auto text-lg text-center">
-            I love development because it allows me to solve real-world problems and innovate with technology.
-            My technical philosophy is rooted in a passion for efficiency and scalability—optimizing workflows and crafting robust solutions.
-            Key achievements include optimizing databases to boost performance by 40% and creating secure, scalable APIs.
-            Looking for a skilled developer? Let's connect!
+          I am driven by a passion for building efficient, scalable, and impactful digital solutions. Technology is constantly evolving, and I thrive on the challenge of solving complex problems, optimizing systems, and ensuring seamless user experiences.
+Beyond just writing code, I aim to help businesses grow and adapt to the digital world by creating reliable backend infrastructures and intuitive web solutions. Every project is an opportunity to innovate, learn, and make a difference.
+My goal is simple: deliver high-quality solutions that drive real value while continuously improving my skills and staying at the forefront of technology. 🚀
           </p>
         </section>
       </main>
@@ -297,5 +308,14 @@ export default function Home() {
           <p className="text-gray-500 text-sm">© 2025 Ishak Korichi. All Rights Reserved.</p>
         </footer>
     </div>
+  );
+}
+
+function NavItem({ href, Icon, text, onClick }) {
+  return (
+    <a href={href} className="group flex items-center text-gray-300 hover:text-[#CAFA43] transition" onClick={onClick}>
+      <Icon className="w-5 h-5 mr-2 group-hover:rotate-6 transition" />
+      {text}
+    </a>
   );
 }
