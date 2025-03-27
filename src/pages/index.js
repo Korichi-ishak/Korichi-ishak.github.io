@@ -15,6 +15,7 @@ import {
   MenuIcon, XIcon 
 } from "lucide-react";
 
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,19 +30,13 @@ const geistMono = Geist_Mono({
 export default function Home() {
   const wpProjects = [
     { title: "EAG Video Editor", description: "Elegant video editing website powered by WordPress.", technologies: ["WordPress", "UI/UX Design"], link: "https://eagvideoeditor.com" },
-    { title: "Diego De La Fuintes", description: "Professional portfolio website.", technologies: ["WordPress"], link: "https://diegodelafuintes.fr" },
-    { title: "Qorrolli Renovation", description: "Renovation services website.", technologies: ["WordPress"], link: "https://qorrollirenovation.fr" },
-    { title: "Maison Chevalier", description: "Luxury real-estate showcase.", technologies: ["WordPress"], link: "https://maison-chevalier.fr" },
-    { title: "Between Us", description: "Modern creative site.", technologies: ["WordPress"], link: "https://between-us.fr" },
     { title: "Drip Drop DZ", description: "Innovative design platform.", technologies: ["WordPress"], link: "https://dripdropdz.com" },
     { title: "Belfort Dzair", description: "Corporate website with modern design.", technologies: ["WordPress"], link: "https://belfortdzair.com" },
-    { title: "Breizh Agency", description: "Agency portfolio website.", technologies: ["WordPress"], link: "https://breizh-agency.fr" },
-    { title: "Nerolia Propreté", description: "Clean and professional cleaning services site.", technologies: ["WordPress"], link: "https://nerolia-proprete.fr" },
     { title: "Plombi", description: "Innovative plumbing services website.", technologies: ["WordPress"], link: "https://plombi.live-website.com" },
-    { title: "EF Énergie Solutions", description: "Energy solutions website.", technologies: ["WordPress"], link: "https://efenergiesolutions.fr" },
-    { title: "AD EauPro", description: "Water solutions platform.", technologies: ["WordPress"], link: "https://ad-eaupro.fr" },
+    { title: "Khadamati", description: "Premium Digital Services & Solutions", technologies: ["WordPress"], link: "https://khadamati-store.com" },
+    
   ];
-
+  
   const mobileProjects = [
     { title: "Wassalni", description: "Carpooling mobile app.", technologies: ["React Native", "Node.js","MongoDB"], link: "" },
     { title: "Clinical", description: "Medical mobile application.", technologies: ["React Native","Node.js","MongoDB"], link: "" },
@@ -207,23 +202,43 @@ export default function Home() {
             <span className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-20 h-1 bg-[#CAFA43]"></span>
           </h2>
           <div className="space-y-6">
-            <div className="p-6 bg-[#222222] rounded-lg shadow-lg">
-              <h3 className="text-2xl font-semibold text-[#CAFA43]">Backend Developer & Data Analyst at Aurafolio</h3>
-              <p className="mt-2 text-sm text-gray-400">Jun 2023 - Present</p>
-              <ul className="list-disc pl-5 mt-2 text-sm">
-                <li>Designed high-performance APIs with Node.js/Express</li>
-                <li>Optimized databases (MongoDB, Firebase, MySQL) improving performance by 40%</li>
-                <li>Integrated cloud services & implemented authentication systems</li>
-                <li>Deployed scalable architectures</li>
-              </ul>
+            {/* Aurafolio Experience with logo */}
+            <div className="p-6 bg-[#222222] rounded-lg shadow-lg flex items-center">
+              <Image 
+                src="/aurafolio.png" 
+                alt="Aurafolio Logo" 
+                width={50} 
+                height={50} 
+                className="mr-4"
+              />
+              <div>
+                <h3 className="text-2xl font-semibold text-[#CAFA43]">Backend Developer & Data Analyst at Aurafolio</h3>
+                <p className="mt-2 text-sm text-gray-400">Jun 2023 - Present</p>
+                <ul className="list-disc pl-5 mt-2 text-sm">
+                  <li>Designing and developing high-performance, secure APIs with Node.js & Express, ensuring scalability, speed, and reliability.</li>
+                  <li>Advanced database optimization (MongoDB, Firebase, MySQL) to enhance data management and application performance.</li>
+                  <li>Integrating cloud solutions, authentication, and payment systems, delivering secure and fully functional applications.</li>
+                  <li>Deploying scalable backend architectures, ensuring long-term reliability, flexibility, and high performance.</li>
+                  <li>Providing strategic and technical consulting, offering expert guidance to drive digital project success.</li>
+                </ul>
+              </div>
             </div>
-            <div className="p-6 bg-[#222222] rounded-lg shadow-lg">
-              <h3 className="text-2xl font-semibold text-[#CAFA43]">Freelance Developer (WordPress & UI/UX)</h3>
-              <p className="mt-2 text-sm text-gray-400">Mar 2023 - Present</p>
-              <ul className="list-disc pl-5 mt-2 text-sm">
-                <li>Interactive UI/UX prototyping</li>
-                <li>Developed high-performance WordPress websites</li>
-              </ul>
+            <div className="p-6 bg-[#222222] rounded-lg shadow-lg flex items-center">
+              <Image 
+                src="/wordpress-logo-png-file-11662328823hnwldnbjf4-removebg-preview.png" 
+                alt="WordPress Logo" 
+                width={50} 
+                height={50}
+                className="mr-4"
+              />
+              <div>
+                <h3 className="text-2xl font-semibold text-[#CAFA43]">Freelance Developer (WordPress & UI/UX)</h3>
+                <p className="mt-2 text-sm text-gray-400">Mar 2023 - Present</p>
+                <ul className="list-disc pl-5 mt-2 text-sm">
+                  <li>Creating interactive UI/UX prototypes, allowing clear visualization before development.</li>
+                  <li>Developing optimized, high-performing WordPress websites, combining modern design and smooth user experience.</li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -235,15 +250,35 @@ export default function Home() {
             <span className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-20 h-1 bg-[#CAFA43]"></span>
           </h2>
           <div className="space-y-6">
-            <div className="p-6 bg-[#222222] rounded-lg shadow-lg">
-              <h3 className="text-2xl font-semibold text-[#CAFA43]">Master's in Big Data Management</h3>
-              <p className="mt-2 text-sm text-gray-400">Université Badji Mokhtar (2024 - 2026)</p>
-              <p className="mt-2 text-sm">Skills Gained: Python, Data Analysis, Machine Learning</p>
+            {/* Master's block with university logo */}
+            <div className="p-6 bg-[#222222] rounded-lg shadow-lg flex items-center">
+              <Image 
+                src="/Badji_Mokhtar_-_Annaba_University_Logo-removebg-preview.png" 
+                alt="Université Badji Mokhtar" 
+                width={50} 
+                height={50} 
+                className="mr-4"
+              />
+              <div>
+                <h3 className="text-2xl font-semibold text-[#CAFA43]">Master's in Big Data Management</h3>
+                <p className="mt-2 text-sm text-gray-400">Université Badji Mokhtar (2024 - 2026)</p>
+                <p className="mt-2 text-sm">Skills Gained: Python, Data Analysis, Machine Learning</p>
+              </div>
             </div>
-            <div className="p-6 bg-[#222222] rounded-lg shadow-lg">
-              <h3 className="text-2xl font-semibold text-[#CAFA43]">Bachelor's in Computer Science</h3>
-              <p className="mt-2 text-sm text-gray-400">Université Badji Mokhtar (2021 - 2024)</p>
-              <p className="mt-2 text-sm">Relevant Courses: Databases, Algorithms, Data Structures</p>
+            {/* Bachelor's block with university logo */}
+            <div className="p-6 bg-[#222222] rounded-lg shadow-lg flex items-center">
+              <Image 
+                src="/Badji_Mokhtar_-_Annaba_University_Logo-removebg-preview.png" 
+                alt="Université Badji Mokhtar" 
+                width={50} 
+                height={50} 
+                className="mr-4"
+              />
+              <div>
+                <h3 className="text-2xl font-semibold text-[#CAFA43]">Bachelor's in Computer Science</h3>
+                <p className="mt-2 text-sm text-gray-400">Université Badji Mokhtar (2021 - 2024)</p>
+                <p className="mt-2 text-sm">Relevant Courses: Databases, Algorithms, Data Structures</p>
+              </div>
             </div>
           </div>
         </section>

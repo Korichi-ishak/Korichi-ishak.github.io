@@ -44,6 +44,42 @@ export default function ProjectCard({ title, description, technologies, link }) 
           className="rounded-lg mt-4"
         />
       )}
+      {title.toLowerCase() === "eag video editor" && (
+        <Image 
+          src="/Eag_Video_Editor.png" 
+          alt="EAG Video Editor" 
+          width={400} 
+          height={250} 
+          className="rounded-lg mt-4"
+        />
+      )}
+      {title.toLowerCase() === "drip drop dz" && (
+        <Image 
+          src="/dripdrop.png" 
+          alt="Drip Drop DZ" 
+          width={400} 
+          height={250} 
+          className="rounded-lg mt-4"
+        />
+      )}
+      {title.toLowerCase() === "plombi" && (
+        <Image 
+          src="/Plombi.png" 
+          alt="Plombi" 
+          width={400} 
+          height={250} 
+          className="rounded-lg mt-4"
+        />
+      )}
+      {title.toLowerCase() === "khadamati" && (
+        <Image 
+          src="/khadamati_online.png" 
+          alt="Khadamati" 
+          width={400} 
+          height={250} 
+          className="rounded-lg mt-4"
+        />
+      )}
       <p className="text-gray-400 mb-4 text-sm">{description}</p>
       <div className="flex items-center text-sm text-gray-500">
         <PaletteIcon className="w-4 h-4 mr-2 text-[#CAFA43]" />
