@@ -49,6 +49,27 @@ export default function Home() {
   ];
 
   const [isOpen, setIsOpen] = useState(false);
+  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setContactForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(contactForm),
+    });
+    if (res.ok) {
+      alert("Message sent successfully!");
+      setContactForm({ name: "", email: "", message: "" });
+    } else {
+      alert("Failed to send message");
+    }
+  };
 
   return (
     <div className="dark min-h-screen bg-[#151515] text-white">
@@ -229,21 +250,30 @@ export default function Home() {
             Contact
             <span className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-20 h-1 bg-[#CAFA43]"></span>
           </h2>
-          <form className="max-w-md mx-auto space-y-6">
+          <form className="max-w-md mx-auto space-y-6" onSubmit={handleSubmit}>
             <input 
               type="text" 
+              name="name"
               placeholder="Name" 
+              value={contactForm.name} 
+              onChange={handleChange}
               className="w-full bg-[#222222] border border-transparent text-white p-3 rounded-lg focus:outline-none focus:border-[#CAFA43] transition-all duration-300 placeholder-gray-500"
               required 
             />
             <input 
               type="email" 
+              name="email"
               placeholder="Email" 
+              value={contactForm.email}
+              onChange={handleChange}
               className="w-full bg-[#222222] border border-transparent text-white p-3 rounded-lg focus:outline-none focus:border-[#CAFA43] transition-all duration-300 placeholder-gray-500"
               required 
             />
             <textarea 
+              name="message"
               placeholder="Message" 
+              value={contactForm.message}
+              onChange={handleChange}
               className="w-full bg-[#222222] border border-transparent text-white p-3 rounded-lg focus:outline-none focus:border-[#CAFA43] transition-all duration-300 placeholder-gray-500"
               rows="5" 
               required
