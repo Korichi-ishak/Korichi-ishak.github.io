@@ -1,6 +1,6 @@
 import ProjectCard from "../components/ProjectCard";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import { 
   HomeIcon, 
@@ -50,6 +50,10 @@ export default function Home() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
