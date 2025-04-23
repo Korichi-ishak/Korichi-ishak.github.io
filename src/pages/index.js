@@ -1,21 +1,14 @@
-import ProjectCard from "../components/ProjectCard";
-import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
-import { 
-  HomeIcon, 
-  BriefcaseIcon, 
-  CodeIcon, 
-  UserIcon, 
-  MailIcon, 
-  LinkedinIcon, 
-  GithubIcon, 
-  SendIcon, 
-  PhoneIcon ,
-  MenuIcon, XIcon 
-} from "lucide-react";
+import { BriefcaseIcon, GraduationCapIcon, LightbulbIcon, ArrowUpIcon, MailIcon, LinkedinIcon, GithubIcon, PhoneIcon } from "lucide-react";
 
-import Image from "next/image";
+// Import components
+import Navigation from "../components/Navigation";
+import Hero from "../components/Hero";
+import ProjectCard from "../components/ProjectCard";
+import SkillsSection from "../components/SkillsSection";
+import ExperienceTimeline from "../components/ExperienceTimeline";
+import ContactForm from "../components/ContactForm";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +19,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
 export default function Home() {
   const wpProjects = [
     { title: "EAG Video Editor", description: "Elegant video editing website powered by WordPress.", technologies: ["WordPress", "UI/UX Design"], link: "https://eagvideoeditor.com" },
@@ -34,7 +26,6 @@ export default function Home() {
     { title: "Belfort Dzair", description: "Corporate website with modern design.", technologies: ["WordPress"], link: "https://belfortdzair.com" },
     { title: "Plombi", description: "Innovative plumbing services website.", technologies: ["WordPress"], link: "https://plombi.live-website.com" },
     { title: "Khadamati", description: "Premium Digital Services & Solutions", technologies: ["WordPress"], link: "https://khadamati-store.com" },
-    
   ];
   
   const mobileProjects = [
@@ -43,348 +34,181 @@ export default function Home() {
     { title: "Astrolabs", description: "Mental health & personal assistance app.", technologies: ["React Native","Node.js","MongoDB","Firebase Firestore"], link: "" },
   ];
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setContactForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(contactForm),
-    });
-    if (res.ok) {
-      alert("Message sent successfully!");
-      setContactForm({ name: "", email: "", message: "" });
-    } else {
-      alert("Failed to send message");
-    }
-  };
-
   return (
-    <div className="dark min-h-screen bg-[#151515] text-white">
-      {/* Modern Navbar */}
-      <nav className="fixed top-0 left-0 w-full bg-[#222224]/80 backdrop-blur-md z-50 shadow-lg">
-        <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
-          <div className="text-2xl font-bold text-[#CAFA43]">IK</div>
-          
-          {/* Mobile Menu Button */}
-          <button className="md:hidden text-gray-300" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
-          </button>
-          
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6">
-            <NavItem href="#about" Icon={UserIcon} text="About" />
-            <NavItem href="#projects" Icon={CodeIcon} text="Projects" />
-            <NavItem href="#skills" Icon={BriefcaseIcon} text="Skills" />
-            <NavItem href="#contact" Icon={MailIcon} text="Contact" />
-          </div>
-        </div>
+    <div className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-[#151515] text-white`}>
+      <Navigation />
+      
+      <main>
+        <Hero />
         
-        {/* Mobile Menu */}
-        {isOpen && (  
-          <div className="md:hidden bg-[#222224] flex flex-col items-center space-y-4 py-4">
-            <NavItem href="#about" Icon={UserIcon} text="About" onClick={() => setIsOpen(false)} />
-            <NavItem href="#projects" Icon={CodeIcon} text="Projects" onClick={() => setIsOpen(false)} />
-            <NavItem href="#skills" Icon={BriefcaseIcon} text="Skills" onClick={() => setIsOpen(false)} />
-            <NavItem href="#contact" Icon={MailIcon} text="Contact" onClick={() => setIsOpen(false)} />
-          </div>
-        )}
-      </nav>
-
-      <main className="pt-24 max-w-6xl mx-auto px-4">
-        {/* Introduction Section */}
-        <section className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-4 text-[#CAFA43]">Ishak Korichi</h1>
-          <h2 className="text-2xl text-gray-300 mb-6">
-            Backend Developer | Data Analyst | Node.js Expert
-          </h2>
-          <p className="max-w-2xl mx-auto text-gray-400">
-            Crafting scalable backend solutions and optimizing data workflows with expertise in Node.js, React, and MongoDB.
-          </p>
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="my-16">
-          <h2 className="text-4xl font-bold text-center mb-12">Projects</h2>
-
-          <div className="mb-12">
-            <h3 className="text-2xl font-semibold mb-4">WordPress Websites</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {wpProjects.map((project, index) => (
-                <ProjectCard key={index} {...project} />
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-semibold mb-4">Mobile Applications</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {mobileProjects.map((project, index) => (
-                <ProjectCard key={index} {...project} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Skills Section */}
-        <section id="skills" className="my-16">
-          <h2 className="text-4xl font-bold text-center mb-12 relative">
-            Skills
-            <span className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-20 h-1 bg-[#CAFA43]"></span>
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { 
-                title: "Languages", 
-                items: ["JavaScript", "Python", "SQL", "R","PHP","Dart","HTML","CSS","C","Java","Kotlin"],
-                icon: "💻"
-              },
-              { 
-                title: "Frameworks & Libraries", 
-                items: ["Node.js", "React", "React Native", "Flutter","Next.js","Laravel","Flutter"],
-                icon: "🚀"
-              },
-              { 
-                title: "Databases", 
-                items: ["MongoDB", "PostgreSQL", "MySQL", "Firebase Firestore"],
-                icon: "📊"
-              },
-              { 
-                title: "Cloud & Backend", 
-                items: ["Firebase", "REST APIs", "JWT Authentication"],
-                icon: "☁️"
-              },
-              { 
-                title: "Other", 
-                items: ["WordPress", "UI/UX Design","Figma","Adobe XD"],
-                icon: "🎨"
-              }
-            ].map((category, index) => (
-              <div 
-                key={index} 
-                className="group relative p-6 bg-[#222222] rounded-lg shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl border border-transparent hover:border-[#CAFA43]"
-              >
-                <div className="absolute top-2 right-2 text-4xl opacity-20 group-hover:opacity-40 transition-opacity">
-                  {category.icon}
-                </div>
-                <h3 className="text-2xl font-semibold mb-4 text-[#CAFA43]">{category.title}</h3>
-                <ul className="space-y-2">
-                  {category.items.map((item, i) => (
-                    <li 
-                      key={i} 
-                      className="flex items-center space-x-2 text-gray-300 group-hover:text-white transition-colors"
-                    >
-                      <span className="w-2 h-2 bg-[#CAFA43] rounded-full"></span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Experience Section */}
-        <section id="experience" className="my-16">
-          <h2 className="text-4xl font-bold text-center mb-12 relative">
-            Experience
-            <span className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-20 h-1 bg-[#CAFA43]"></span>
-          </h2>
-          <div className="space-y-6">
-            {/* Aurafolio Experience with logo */}
-            <div className="p-6 bg-[#222222] rounded-lg shadow-lg flex items-center">
-              <Image 
-                src="/aurafolio.png" 
-                alt="Aurafolio Logo" 
-                width={50} 
-                height={50} 
-                className="mr-4"
-              />
-              <div>
-                <h3 className="text-2xl font-semibold text-[#CAFA43]">Backend Developer & Data Analyst at Aurafolio</h3>
-                <p className="mt-2 text-sm text-gray-400">Jun 2023 - Present</p>
-                <ul className="list-disc pl-5 mt-2 text-sm">
-                  <li>Designing and developing high-performance, secure APIs with Node.js & Express, ensuring scalability, speed, and reliability.</li>
-                  <li>Advanced database optimization (MongoDB, Firebase, MySQL) to enhance data management and application performance.</li>
-                  <li>Integrating cloud solutions, authentication, and payment systems, delivering secure and fully functional applications.</li>
-                  <li>Deploying scalable backend architectures, ensuring long-term reliability, flexibility, and high performance.</li>
-                  <li>Providing strategic and technical consulting, offering expert guidance to drive digital project success.</li>
-                </ul>
-              </div>
-            </div>
-            <div className="p-6 bg-[#222222] rounded-lg shadow-lg flex items-center">
-              <Image 
-                src="/wordpress-logo-png-file-11662328823hnwldnbjf4-removebg-preview.png" 
-                alt="WordPress Logo" 
-                width={50} 
-                height={50}
-                className="mr-4"
-              />
-              <div>
-                <h3 className="text-2xl font-semibold text-[#CAFA43]">Freelance Developer (WordPress & UI/UX)</h3>
-                <p className="mt-2 text-sm text-gray-400">Mar 2023 - Present</p>
-                <ul className="list-disc pl-5 mt-2 text-sm">
-                  <li>Creating interactive UI/UX prototypes, allowing clear visualization before development.</li>
-                  <li>Developing optimized, high-performing WordPress websites, combining modern design and smooth user experience.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Education Section */}
-        <section id="education" className="my-16">
-          <h2 className="text-4xl font-bold text-center mb-12 relative">
-            Education
-            <span className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-20 h-1 bg-[#CAFA43]"></span>
-          </h2>
-          <div className="space-y-6">
-            {/* Master's block with university logo */}
-            <div className="p-6 bg-[#222222] rounded-lg shadow-lg flex items-center">
-              <Image 
-                src="/Badji_Mokhtar_-_Annaba_University_Logo-removebg-preview.png" 
-                alt="Université Badji Mokhtar" 
-                width={50} 
-                height={50} 
-                className="mr-4"
-              />
-              <div>
-                <h3 className="text-2xl font-semibold text-[#CAFA43]">Master's in Big Data Management</h3>
-                <p className="mt-2 text-sm text-gray-400">Université Badji Mokhtar (2024 - 2026)</p>
-                <p className="mt-2 text-sm">Skills Gained: Python, Data Analysis, Machine Learning</p>
-              </div>
-            </div>
-            {/* Bachelor's block with university logo */}
-            <div className="p-6 bg-[#222222] rounded-lg shadow-lg flex items-center">
-              <Image 
-                src="/Badji_Mokhtar_-_Annaba_University_Logo-removebg-preview.png" 
-                alt="Université Badji Mokhtar" 
-                width={50} 
-                height={50} 
-                className="mr-4"
-              />
-              <div>
-                <h3 className="text-2xl font-semibold text-[#CAFA43]">Bachelor's in Computer Science</h3>
-                <p className="mt-2 text-sm text-gray-400">Université Badji Mokhtar (2021 - 2024)</p>
-                <p className="mt-2 text-sm">Relevant Courses: Databases, Algorithms, Data Structures</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Form Section */}
-        <section id="contact" className="my-16">
-          <h2 className="text-4xl font-bold text-center mb-12 relative">
-            Contact
-            <span className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-20 h-1 bg-[#CAFA43]"></span>
-          </h2>
-          <form className="max-w-md mx-auto space-y-6" onSubmit={handleSubmit}>
-            <input 
-              type="text" 
-              name="name"
-              placeholder="Name" 
-              value={contactForm.name} 
-              onChange={handleChange}
-              className="w-full bg-[#222222] border border-transparent text-white p-3 rounded-lg focus:outline-none focus:border-[#CAFA43] transition-all duration-300 placeholder-gray-500"
-              required 
-            />
-            <input 
-              type="email" 
-              name="email"
-              placeholder="Email" 
-              value={contactForm.email}
-              onChange={handleChange}
-              className="w-full bg-[#222222] border border-transparent text-white p-3 rounded-lg focus:outline-none focus:border-[#CAFA43] transition-all duration-300 placeholder-gray-500"
-              required 
-            />
-            <textarea 
-              name="message"
-              placeholder="Message" 
-              value={contactForm.message}
-              onChange={handleChange}
-              className="w-full bg-[#222222] border border-transparent text-white p-3 rounded-lg focus:outline-none focus:border-[#CAFA43] transition-all duration-300 placeholder-gray-500"
-              rows="5" 
-              required
-            ></textarea>
-            <button 
-              type="submit" 
-              className="w-full bg-[#CAFA43] text-black py-3 rounded-lg hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 font-bold uppercase tracking-wider"
-            >
-              Send Message
-            </button>
-          </form>
-        </section>
-
         {/* About Section */}
-        <section id="about" className="my-16">
-          <h2 className="text-4xl font-bold text-center mb-12 relative">
-            About Me
-            <span className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-20 h-1 bg-[#CAFA43]"></span>
-          </h2>
-          <p className="max-w-3xl mx-auto text-lg text-center">
-          I am driven by a passion for building efficient, scalable, and impactful digital solutions. Technology is constantly evolving, and I thrive on the challenge of solving complex problems, optimizing systems, and ensuring seamless user experiences.
-Beyond just writing code, I aim to help businesses grow and adapt to the digital world by creating reliable backend infrastructures and intuitive web solutions. Every project is an opportunity to innovate, learn, and make a difference.
-My goal is simple: deliver high-quality solutions that drive real value while continuously improving my skills and staying at the forefront of technology. 🚀
-          </p>
+        <section id="about" className="py-20 px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="section-title">About Me</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+              <div className="bg-[#222224] p-8 rounded-xl border border-[#2C2C2E] shadow-lg hover:border-[#CAFA43] transition-all duration-300">
+                <p className="text-lg leading-relaxed text-gray-300">
+                  I am driven by a passion for building efficient, scalable, and impactful digital solutions. Technology is constantly evolving, and I thrive on the challenge of solving complex problems, optimizing systems, and ensuring seamless user experiences.
+                </p>
+                <p className="text-lg leading-relaxed text-gray-300 mt-4">
+                  Beyond just writing code, I aim to help businesses grow and adapt to the digital world by creating reliable backend infrastructures and intuitive web solutions. Every project is an opportunity to innovate, learn, and make a difference.
+                </p>
+                <p className="text-lg leading-relaxed text-gray-300 mt-4">
+                  My goal is simple: deliver high-quality solutions that drive real value while continuously improving my skills and staying at the forefront of technology. 🚀
+                </p>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="bg-[#222224] p-6 rounded-xl border border-[#2C2C2E] shadow-lg hover:border-[#CAFA43] transition-all duration-300">
+                  <h3 className="text-xl font-bold text-[#CAFA43] mb-3">Professional Focus</h3>
+                  <div className="flex items-start">
+                    <div className="bg-[#2C2C2E] p-2 rounded-lg mr-4">
+                      <BriefcaseIcon className="w-5 h-5 text-[#CAFA43]" />
+                    </div>
+                    <p className="text-gray-300">
+                      Specializing in backend development with Node.js, database optimization, and creating efficient data workflows.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="bg-[#222224] p-6 rounded-xl border border-[#2C2C2E] shadow-lg hover:border-[#CAFA43] transition-all duration-300">
+                  <h3 className="text-xl font-bold text-[#CAFA43] mb-3">Academic Background</h3>
+                  <div className="flex items-start">
+                    <div className="bg-[#2C2C2E] p-2 rounded-lg mr-4">
+                      <GraduationCapIcon className="w-5 h-5 text-[#CAFA43]" />
+                    </div>
+                    <p className="text-gray-300">
+                      Pursuing a Master's in Big Data Management while applying my Bachelor's in Computer Science knowledge to real-world projects.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="bg-[#222224] p-6 rounded-xl border border-[#2C2C2E] shadow-lg hover:border-[#CAFA43] transition-all duration-300">
+                  <h3 className="text-xl font-bold text-[#CAFA43] mb-3">Work Philosophy</h3>
+                  <div className="flex items-start">
+                    <div className="bg-[#2C2C2E] p-2 rounded-lg mr-4">
+                      <LightbulbIcon className="w-5 h-5 text-[#CAFA43]" />
+                    </div>
+                    <p className="text-gray-300">
+                      Building technology that solves real problems with clean code, optimal performance, and user-centered design principles.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
+        
+        {/* Projects Section */}
+        <section id="projects" className="py-20 px-4 bg-[#1A1A1A]">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="section-title">Projects</h2>
+            
+            <div className="mb-16">
+              <div className="flex justify-between items-center mb-8">
+                <h3 className="text-2xl font-semibold text-white">WordPress Websites</h3>
+                <div className="h-0.5 bg-[#2C2C2E] flex-grow ml-4 rounded-full"></div>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {wpProjects.map((project, index) => (
+                  <ProjectCard key={index} {...project} />
+                ))}
+              </div>
+            </div>
+            
+            <div>
+              <div className="flex justify-between items-center mb-8">
+                <h3 className="text-2xl font-semibold text-white">Mobile Applications</h3>
+                <div className="h-0.5 bg-[#2C2C2E] flex-grow ml-4 rounded-full"></div>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {mobileProjects.map((project, index) => (
+                  <ProjectCard key={index} {...project} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <SkillsSection />
+        
+        <ExperienceTimeline />
+        
+        <ContactForm />
       </main>
-
+      
       {/* Footer */}
-      <footer className="mt-16 py-8 text-center">
-          <div className="flex justify-center space-x-6 mb-6">
+      <footer className="py-12 px-4 bg-[#151515] border-t border-[#2C2C2E]">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="mb-6">
+            <span className="text-3xl font-bold text-[#CAFA43]">IK</span>
+          </div>
+          
+          <div className="flex justify-center space-x-6 mb-8">
             <a 
               href="mailto:ishakkorichi09@gmail.com" 
-              className="text-[#CAFA43] hover:scale-110 transition"
+              className="text-gray-400 hover:text-[#CAFA43] transition-all duration-300 transform hover:scale-110"
+              aria-label="Email"
             >
-              <MailIcon className="w-7 h-7" />
+              <MailIcon className="w-6 h-6" />
             </a>
             <a 
               href="https://linkedin.com/in/ishak-korichi-77a398321" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[#CAFA43] hover:scale-110 transition"
+              className="text-gray-400 hover:text-[#CAFA43] transition-all duration-300 transform hover:scale-110"
+              aria-label="LinkedIn"
             >
-              <LinkedinIcon className="w-7 h-7" />
+              <LinkedinIcon className="w-6 h-6" />
             </a>
             <a 
               href="https://github.com/Chrestiondior77" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[#CAFA43] hover:scale-110 transition"
+              className="text-gray-400 hover:text-[#CAFA43] transition-all duration-300 transform hover:scale-110"
+              aria-label="GitHub"
             >
-              <GithubIcon className="w-7 h-7" />
+              <GithubIcon className="w-6 h-6" />
             </a>
             <a 
               href="https://wa.me/213541945025" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-[#CAFA43] hover:scale-110 transition"
+              className="text-gray-400 hover:text-[#CAFA43] transition-all duration-300 transform hover:scale-110"
+              aria-label="WhatsApp"
             >
-              <PhoneIcon className="w-7 h-7" />
+              <PhoneIcon className="w-6 h-6" />
             </a>
           </div>
-          <p className="text-gray-500 text-sm">© 2025 Ishak Korichi. All Rights Reserved.</p>
-        </footer>
+          
+          <p className="text-gray-500 text-sm">© {new Date().getFullYear()} Ishak Korichi. All Rights Reserved.</p>
+        </div>
+        
+        {/* Scroll to top button */}
+        {isScrolled && (
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="fixed right-6 bottom-6 bg-[#222224] p-3 rounded-full border border-[#2C2C2E] hover:border-[#CAFA43] shadow-lg transition-all duration-300 hover:transform hover:scale-110"
+            aria-label="Scroll to top"
+          >
+            <ArrowUpIcon className="w-5 h-5 text-[#CAFA43]" />
+          </button>
+        )}
+      </footer>
     </div>
-  );
-}
-
-function NavItem({ href, Icon, text, onClick }) {
-  return (
-    <a href={href} className="group flex items-center text-gray-300 hover:text-[#CAFA43] transition" onClick={onClick}>
-      <Icon className="w-5 h-5 mr-2 group-hover:rotate-6 transition" />
-      {text}
-    </a>
   );
 }
