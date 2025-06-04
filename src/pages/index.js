@@ -26,6 +26,7 @@ export default function Home() {
     { title: "Belfort Dzair", description: "Corporate website with modern design.", technologies: ["WordPress"], link: "https://belfortdzair.com" },
     { title: "Plombi", description: "Innovative plumbing services website.", technologies: ["WordPress"], link: "https://plombi.live-website.com" },
     { title: "Khadamati", description: "Premium Digital Services & Solutions", technologies: ["WordPress"], link: "https://khadamati-store.com" },
+    { title: "Point de location", description: "Digital car rental – book, pay & drive in clicks", technologies: ["WordPress"], link: "https://lepointdelocation.com" },
   ];
   
   const mobileProjects = [
