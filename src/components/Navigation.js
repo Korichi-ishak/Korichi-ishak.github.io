@@ -5,8 +5,8 @@ export default function Navigation() {
   const items = [
     { name: "Home", url: "#home", icon: HomeIcon },
     { name: "About", url: "#about", icon: UserIcon },
-    { name: "Projects", url: "#projects", icon: CodeIcon },
-    { name: "Skills", url: "#skills", icon: BriefcaseIcon },
+  { name: "Projects", url: "#projects", icon: CodeIcon },
+	{ name: "Skills", url: "#skills", icon: BriefcaseIcon, extraIds: ["experience"] },
     { name: "Contact", url: "#contact", icon: MailIcon },
   ];
 

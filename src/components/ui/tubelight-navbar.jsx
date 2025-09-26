@@ -20,10 +20,78 @@ export function NavBar({
     return () => window.removeEventListener("resize", handleResize);
   }, [])
 
+  // Auto update active tab while scrolling through sections
+  useEffect(() => {
+    if (!items || items.length === 0) return;
+
+    let ticking = false;
+
+    const sectionMeta = items.map(i => ({
+      name: i.name,
+      ids: [
+        (i.url || '').startsWith('#') ? i.url.slice(1) : null,
+        ...(i.extraIds || [])
+      ].filter(Boolean)
+    }));
+
+    const allSectionIds = sectionMeta.flatMap(m => m.ids);
+
+    const getCurrentSection = () => {
+      let current = items[0].name;
+      const viewportAnchor = window.innerHeight * 0.28; // point from top to test
+      for (const meta of sectionMeta) {
+        for (const id of meta.ids) {
+          const el = document.getElementById(id);
+          if (!el) continue;
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= viewportAnchor && rect.bottom >= viewportAnchor) {
+            current = meta.name;
+            break;
+          }
+        }
+      }
+      return current;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const cur = getCurrentSection();
+            setActiveTab(prev => prev === cur ? prev : cur);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    // Use an IntersectionObserver as a fallback/initial trigger
+    const observer = new IntersectionObserver(() => {
+      const cur = getCurrentSection();
+      setActiveTab(prev => prev === cur ? prev : cur);
+    }, { threshold: [0.25, 0.5, 0.75] });
+
+  allSectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Initial set after mount
+    setTimeout(() => {
+      const cur = getCurrentSection();
+      setActiveTab(prev => prev === cur ? prev : cur);
+    }, 100);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      observer.disconnect();
+    };
+  }, [items]);
+
   return (
     <div
       className={cn(
-        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6",
+  "fixed top-0 left-1/2 -translate-x-1/2 z-50 pt-4",
         className
       )}>
       <div
