@@ -33,7 +33,7 @@ export default async function handler(req, res) {
       text: `Message from ${name} (${email}):\n\n${message}`,
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 10px;">
-          <h2 style="color: #333; border-bottom: 2px solid #CAFA43; padding-bottom: 10px;">New Contact Form Submission</h2>
+          <h2 style="color: #111; border-bottom: 2px solid #ef4444; padding-bottom: 10px;">New Contact Form Submission</h2>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
           <h3 style="color: #444;">Message:</h3>

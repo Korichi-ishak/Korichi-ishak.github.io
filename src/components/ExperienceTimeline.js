@@ -1,51 +1,42 @@
 import { BriefcaseIcon, GraduationCapIcon } from "lucide-react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function ExperienceTimeline() {
   const experiences = [
     {
-      title: "Backend Developer & Data Analyst",
-      company: "Aurafolio",
-      period: "Jun 2023 - Present",
-      logo: "/aurafolio.png",
+      title: "Founder & CEO",
+      company: "Wiizdev",
+      period: "Jan 2025 - Present",
       type: "work",
       details: [
-        "Designing and developing high-performance, secure APIs with Node.js & Express",
-        "Advanced database optimization (MongoDB, Firebase, MySQL)",
-        "Integrating cloud solutions, authentication, and payment systems",
-        "Deploying scalable backend architectures",
-        "Providing strategic and technical consulting"
+        "Leading a team of developers and designers",
+        "Strategic planning and business development",
+        "Fullstack development and project management",
+        "Client relationship management and growth"
+      ]
+    },
+    {
+      title: "Fullstack Developer",
+      company: "Aurafolio",
+      period: "Jun 2023 - Dec 2024",
+      type: "work",
+      details: [
+        "High-performance, secure APIs with Node.js & Express",
+        "Database optimization (MongoDB, Firebase, MySQL)",
+        "Cloud integrations, auth and payments",
+        "Scalable deployments and architecture"
       ]
     },
     {
       title: "Freelance Developer",
-      company: "WordPress & UI/UX",
-      period: "Mar 2023 - Present",
-      logo: "/wordpress-logo-png-file-11662328823hnwldnbjf4-removebg-preview.png",
+      company: "WordPress & Fullstack",
+      period: "Jan 2022 - Present",
       type: "work",
       details: [
-        "Creating interactive UI/UX prototypes",
-        "Developing optimized, high-performing WordPress websites"
-      ]
-    },
-    {
-      title: "Master's in Big Data Management",
-      institution: "Université Badji Mokhtar",
-      period: "Sep 2024 - Jun 2026",
-      logo: "/Badji_Mokhtar_-_Annaba_University_Logo-removebg-preview.png",
-      type: "education",
-      details: [
-        "Skills Gained: Python, Data Analysis, Machine Learning"
-      ]
-    },
-    {
-      title: "Bachelor's in Computer Science",
-      institution: "Université Badji Mokhtar",
-      period: "Oct 2021 - Jun 2024",
-      logo: "/Badji_Mokhtar_-_Annaba_University_Logo-removebg-preview.png",
-      type: "education",
-      details: [
-        "Relevant Courses: Databases, Algorithms, Data Structures"
+        "WordPress website development and customization",
+        "Fullstack web applications",
+        "UI/UX design and implementation",
+        "Client consultation and project management"
       ]
     }
   ];
@@ -53,52 +44,73 @@ export default function ExperienceTimeline() {
   return (
     <section id="experience" className="py-20 px-4">
       <h2 className="section-title">Journey</h2>
-      
-      <div className="max-w-4xl mx-auto relative">
-        {/* Timeline line */}
-        <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-[#2C2C2E] transform md:translate-x-[-50%]"></div>
-        
+
+      <Timeline experiences={experiences} />
+    </section>
+  );
+}
+
+function Timeline({ experiences }) {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const section = document.getElementById("experience");
+    if (!section) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="max-w-4xl mx-auto relative">
+      {/* Vertical line with subtle red gradient */}
+      <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-red-500/60 via-white/10 to-transparent"></div>
+
+      <div className="space-y-10">
         {experiences.map((item, index) => (
-          <div 
-            key={index} 
-            className={`mb-12 relative ${
-              index % 2 === 0 ? 'md:pr-8 md:ml-auto md:mr-0' : 'md:pl-8'
-            } md:w-1/2 fade-in`}
-            style={{ animationDelay: `${index * 0.2}s` }}
+          <div
+            key={index}
+            className="relative pl-16"
+            style={{
+              opacity: visible ? 1 : 0,
+              transform: visible ? "translateY(0px)" : "translateY(16px)",
+              transition: "opacity 600ms ease, transform 600ms ease",
+              transitionDelay: `${index * 120}ms`
+            }}
           >
-            {/* Timeline dot */}
-            <div className="absolute left-[-8px] md:left-auto md:right-[-8px] w-4 h-4 rounded-full bg-[#CAFA43] z-10 transform md:translate-x-1/2 top-6"></div>
-            
-            <div className="bg-[#222224] p-6 rounded-xl border border-[#2C2C2E] shadow-lg hover:border-[#CAFA43] transition-all duration-300">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-white p-1 mr-4 flex-shrink-0">
-                  <Image
-                    src={item.logo}
-                    alt={item.company || item.institution}
-                    width={48}
-                    height={48}
-                    className="object-contain"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-[#CAFA43]">{item.title}</h3>
-                  <p className="text-gray-300">{item.company || item.institution}</p>
-                  <p className="text-sm text-gray-400">{item.period}</p>
-                </div>
-                <div className="ml-auto">
+            {/* Node */}
+            <div className="absolute left-0 top-0">
+              <div className="relative">
+                <div className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center ring-8 ring-black shadow-lg">
                   {item.type === "work" ? (
-                    <BriefcaseIcon className="w-5 h-5 text-[#CAFA43]" />
+                    <BriefcaseIcon className="w-5 h-5 text-white" />
                   ) : (
-                    <GraduationCapIcon className="w-5 h-5 text-[#CAFA43]" />
+                    <GraduationCapIcon className="w-5 h-5 text-white" />
                   )}
                 </div>
+                {/* soft glow */}
+                <div className="absolute inset-0 rounded-full bg-red-500/30 blur-lg -z-10 animate-pulse"></div>
               </div>
-              
-              <ul className="space-y-2 text-sm">
+            </div>
+
+            {/* Card */}
+            <div className="group bg-[#111111] border border-white/10 hover:border-red-500 rounded-xl p-6 transition-colors shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)]">
+              <div className="flex items-start gap-4">
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-white group-hover:text-red-500 transition-colors">{item.title}</h3>
+                  <p className="text-white/80">{item.company || item.institution}</p>
+                  <p className="text-white/50 text-sm mt-1">{item.period}</p>
+                </div>
+              </div>
+
+              <ul className="mt-4 space-y-2">
                 {item.details.map((detail, i) => (
-                  <li key={i} className="flex items-start">
-                    <span className="w-1.5 h-1.5 bg-[#CAFA43] rounded-full mt-1.5 mr-2 flex-shrink-0"></span>
-                    <span className="text-gray-300">{detail}</span>
+                  <li key={i} className="flex items-start text-white/80 text-sm">
+                    <span className="mt-2 mr-2 h-1.5 w-1.5 rounded-full bg-red-500"></span>
+                    <span>{detail}</span>
                   </li>
                 ))}
               </ul>
@@ -106,6 +118,6 @@ export default function ExperienceTimeline() {
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

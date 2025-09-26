@@ -48,7 +48,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 bg-[#1A1A1A]">
+    <section id="contact" className="py-20 px-4 bg-[#0f0f0f]">
       <div className="max-w-6xl mx-auto">
         <h2 className="section-title">Get In Touch</h2>
 
@@ -58,12 +58,12 @@ export default function ContactForm() {
               action="https://formsubmit.co/ishakkorichi09@gmail.com"
               method="POST"
               onSubmit={handleFormSubmit}
-              className="space-y-6 bg-[#222224] p-8 rounded-xl shadow-lg border border-[#2C2C2E]"
+              className="space-y-6 bg-[#222224] p-8 rounded-xl shadow-lg border border-white/10"
             >
               <input type="hidden" name="_captcha" value="false" />
 
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
+                <label htmlFor="name" className="block text-sm font-medium text-white/80 mb-1">
                   Name
                 </label>
                 <input
@@ -76,13 +76,13 @@ export default function ContactForm() {
                   required
                   className={`w-full bg-[#2C2C2E] border ${
                     errors.name ? "border-red-500" : "border-[#3E3E40]"
-                  } text-white p-3 rounded-lg focus:outline-none focus:border-[#CAFA43] transition-all duration-300 placeholder-gray-500`}
+                  } text-white p-3 rounded-lg focus:outline-none focus:border-red-500 transition-all duration-300 placeholder-white/40`}
                 />
                 {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+                <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-1">
                   Email
                 </label>
                 <input
@@ -95,13 +95,13 @@ export default function ContactForm() {
                   required
                   className={`w-full bg-[#2C2C2E] border ${
                     errors.email ? "border-red-500" : "border-[#3E3E40]"
-                  } text-white p-3 rounded-lg focus:outline-none focus:border-[#CAFA43] transition-all duration-300 placeholder-gray-500`}
+                  } text-white p-3 rounded-lg focus:outline-none focus:border-red-500 transition-all duration-300 placeholder-white/40`}
                 />
                 {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
+                <label htmlFor="message" className="block text-sm font-medium text-white/80 mb-1">
                   Message
                 </label>
                 <textarea
@@ -114,7 +114,7 @@ export default function ContactForm() {
                   rows="6"
                   className={`w-full bg-[#2C2C2E] border ${
                     errors.message ? "border-red-500" : "border-[#3E3E40]"
-                  } text-white p-3 rounded-lg focus:outline-none focus:border-[#CAFA43] transition-all duration-300 placeholder-gray-500`}
+                  } text-white p-3 rounded-lg focus:outline-none focus:border-red-500 transition-all duration-300 placeholder-white/40`}
                 ></textarea>
                 {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
               </div>
@@ -123,8 +123,8 @@ export default function ContactForm() {
                 <div
                   className={`p-3 rounded-lg flex items-center text-sm ${
                     status.type === "success"
-                      ? "bg-green-800/30 text-green-300"
-                      : "bg-red-800/30 text-red-300"
+                      ? "bg-white/10 text-white"
+                      : "bg-red-900/30 text-red-300"
                   }`}
                 >
                   {status.type === "success" ? (
@@ -138,7 +138,7 @@ export default function ContactForm() {
 
               <button
                 type="submit"
-                className="w-full bg-[#CAFA43] text-black font-semibold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center"
+                className="w-full bg-red-500 text-black font-semibold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center"
               >
                 <SendIcon className="w-5 h-5 mr-2" />
                 Send Message
@@ -147,8 +147,8 @@ export default function ContactForm() {
           </div>
 
           <div className="order-1 md:order-2 flex flex-col justify-center">
-            <h3 className="text-2xl font-bold text-[#CAFA43] mb-4">Let's Work Together</h3>
-            <p className="text-gray-300 mb-8">
+            <h3 className="text-2xl font-bold text-red-500 mb-4">Let's Work Together</h3>
+            <p className="text-white/80 mb-8">
               Looking for a skilled backend developer or data analyst for your next project?
               I'm currently available for freelance work and open to full-time opportunities.
             </p>
@@ -156,13 +156,13 @@ export default function ContactForm() {
             <div className="space-y-6">
               <div className="flex items-start">
                 <div className="bg-[#2C2C2E] p-3 rounded-full mr-4">
-                  <MailIcon className="w-6 h-6 text-[#CAFA43]" />
+                  <MailIcon className="w-6 h-6 text-red-500" />
                 </div>
                 <div>
                   <h4 className="text-white font-medium">Email</h4>
                   <a
                     href="mailto:ishakkorichi09@gmail.com"
-                    className="text-gray-400 hover:text-[#CAFA43] transition-colors"
+                    className="text-white/70 hover:text-red-500 transition-colors"
                   >
                     ishakkorichi09@gmail.com
                   </a>
@@ -171,11 +171,11 @@ export default function ContactForm() {
 
               <div className="flex items-start">
                 <div className="bg-[#2C2C2E] p-3 rounded-full mr-4">
-                  <BriefcaseIcon className="w-6 h-6 text-[#CAFA43]" />
+                  <BriefcaseIcon className="w-6 h-6 text-red-500" />
                 </div>
                 <div>
                   <h4 className="text-white font-medium">Work Availability</h4>
-                  <p className="text-gray-400">
+                  <p className="text-white/70">
                     Open to freelance projects and full-time opportunities
                   </p>
                 </div>
