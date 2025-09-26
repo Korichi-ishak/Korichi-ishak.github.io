@@ -45,7 +45,7 @@ export default function Hero() {
   }, [charIndex, isDeleting, roleIndex, roles]);
   
   return (
-    <section id="home" ref={heroRef} className="grid-bg pt-32 pb-20 px-4">
+  <section id="home" ref={heroRef} className="grid-bg pt-20 md:pt-32 pb-20 px-4">
       <div className="max-w-6xl mx-auto flex flex-col items-center md:flex-row md:justify-between">
         <div className="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
           <div className="fade-in" style={{ animationDelay: "0.2s" }}>
