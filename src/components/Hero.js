@@ -3,7 +3,7 @@ import { ArrowDownIcon, GithubIcon, LinkedinIcon, MailIcon, CodeIcon } from "luc
 
 export default function Hero() {
   const [typedText, setTypedText] = useState("");
-  const roles = ["Backend Developer", "Data Analyst", "UI/UX Designer", "Node.js Expert"];
+  const roles = ["Fullstack Developer", "Data Analyst", "UI/UX Designer", "Project Manager", "Team Leader"];
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -50,27 +50,27 @@ export default function Hero() {
         <div className="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
           <div className="fade-in" style={{ animationDelay: "0.2s" }}>
             <h1 className="text-5xl md:text-6xl font-bold mb-4">
-              Ishak <span className="text-[#CAFA43]">Korichi</span>
+              Ishak <span className="text-red-500">Korichi</span>
             </h1>
             <div className="h-16 md:h-12">
-              <h2 className="text-2xl md:text-3xl text-gray-300 font-light">
+              <h2 className="text-2xl md:text-3xl text-white/80 font-light">
                 <span className="inline-block">{typedText}</span>
-                <span className="inline-block w-1 h-8 bg-[#CAFA43] ml-1 animate-blink"></span>
+                <span className="inline-block w-1 h-8 bg-red-500 ml-1 animate-blink"></span>
               </h2>
             </div>
-            <p className="max-w-md text-gray-400 my-6 leading-relaxed">
-              Crafting scalable backend solutions and optimizing data workflows with expertise in Node.js, React, and MongoDB.
+            <p className="max-w-md text-white/70 my-6 leading-relaxed">
+              Crafting end-to-end digital solutions with expertise in fullstack development, data analysis, UI/UX design, and team leadership.
             </p>
             <div className="flex flex-wrap justify-center md:justify-start space-x-4 mt-8">
               <a 
                 href="#contact" 
-                className="px-6 py-3 bg-[#CAFA43] text-black font-semibold rounded-full hover:bg-opacity-90 transition-all transform hover:scale-105"
+                className="px-6 py-3 bg-red-500 text-black font-semibold rounded-full hover:bg-opacity-90 transition-all transform hover:scale-105"
               >
                 Contact Me
               </a>
               <a 
                 href="#projects" 
-                className="px-6 py-3 border border-[#CAFA43] text-[#CAFA43] font-semibold rounded-full hover:bg-[#CAFA43]/10 transition-all"
+                className="px-6 py-3 border border-red-500 text-red-500 font-semibold rounded-full hover:bg-red-500/10 transition-all"
               >
                 View Projects
               </a>
@@ -80,7 +80,7 @@ export default function Hero() {
                 href="https://linkedin.com/in/ishak-korichi-77a398321" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#CAFA43] transition-colors"
+                className="text-white/70 hover:text-red-500 transition-colors"
                 aria-label="LinkedIn"
               >
                 <LinkedinIcon className="w-6 h-6" />
@@ -89,14 +89,14 @@ export default function Hero() {
                 href="https://github.com/Korichi-ishak" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#CAFA43] transition-colors"
+                className="text-white/70 hover:text-red-500 transition-colors"
                 aria-label="GitHub"
               >
                 <GithubIcon className="w-6 h-6" />
               </a>
               <a 
                 href="mailto:ishakkorichi09@gmail.com" 
-                className="text-gray-400 hover:text-[#CAFA43] transition-colors"
+                className="text-white/70 hover:text-red-500 transition-colors"
                 aria-label="Email"
               >
                 <MailIcon className="w-6 h-6" />
@@ -106,7 +106,7 @@ export default function Hero() {
         </div>
         <div className="md:w-1/2 flex justify-center md:justify-end fade-in" style={{ animationDelay: "0.4s" }}>
           <div className="relative">
-            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[#CAFA43] p-1">
+            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-red-500 p-1">
               <div className="w-full h-full rounded-full overflow-hidden">
                 <img
                   src="/pdp.jpg" // Make sure to add your profile picture
@@ -115,11 +115,11 @@ export default function Hero() {
                 />
               </div>
             </div>
-            <div className="absolute -top-4 -right-4 bg-[#222224] p-3 rounded-full border-2 border-[#CAFA43]">
-              <CodeIcon className="w-6 h-6 text-[#CAFA43]" />
+            <div className="absolute -top-4 -right-4 bg-[#222224] p-3 rounded-full border-2 border-red-500">
+              <CodeIcon className="w-6 h-6 text-red-500" />
             </div>
-            <div className="absolute -bottom-2 -left-2 bg-[#222224] py-2 px-4 rounded-full border-2 border-[#CAFA43] text-sm font-medium">
-              Node.js Expert
+            <div className="absolute -bottom-2 -left-2 bg-[#222224] py-2 px-4 rounded-full border-2 border-red-500 text-sm font-medium">
+              Fullstack Expert
             </div>
           </div>
         </div>
@@ -127,10 +127,10 @@ export default function Hero() {
       <div className="flex justify-center mt-16">
         <a 
           href="#about" 
-          className="animate-bounce bg-[#222224] p-3 rounded-full border border-[#2C2C2E]"
+          className="animate-bounce bg-[#222224] p-3 rounded-full border border-white/10"
           aria-label="Scroll down"
         >
-          <ArrowDownIcon className="w-5 h-5 text-[#CAFA43]" />
+          <ArrowDownIcon className="w-5 h-5 text-red-500" />
         </a>
       </div>
     </section>

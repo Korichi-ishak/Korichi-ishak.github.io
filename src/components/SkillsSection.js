@@ -8,59 +8,68 @@ import {
 export default function SkillsSection() {
   const skillCategories = [
     {
-      title: "Backend Development",
+      title: "Fullstack Development",
       icon: Server,
-      color: "#CAFA43",
+      color: "#ef4444",
       skills: [
         { name: "Node.js", level: 95 },
+        { name: "React", level: 90 },
+        { name: "Next.js", level: 85 },
         { name: "Express", level: 90 },
         { name: "MongoDB", level: 85 },
-        { name: "Firebase", level: 80 },
-        { name: "REST API Design", level: 90 }
+        { name: "PostgreSQL", level: 80 }
       ]
     },
     {
-      title: "Frontend Development",
+      title: "Frontend & Design",
       icon: Monitor,
-      color: "#CAFA43",
+      color: "#ef4444",
       skills: [
-        { name: "React", level: 85 },
-        { name: "Next.js", level: 80 },
         { name: "JavaScript", level: 95 },
-        { name: "HTML/CSS", level: 85 },
-        { name: "Tailwind CSS", level: 80 }
-      ]
-    },
-    {
-      title: "Mobile Development",
-      icon: Smartphone,
-      color: "#CAFA43",
-      skills: [
-        { name: "React Native", level: 85 },
-        { name: "Flutter", level: 75 },
-        { name: "Firebase Integration", level: 80 }
+        { name: "TypeScript", level: 85 },
+        { name: "HTML/CSS", level: 90 },
+        { name: "Tailwind CSS", level: 85 },
+        { name: "UI/UX Design", level: 80 },
+        { name: "Figma", level: 75 }
       ]
     },
     {
       title: "Data Analysis",
       icon: BarChart,
-      color: "#CAFA43",
+      color: "#ef4444",
       skills: [
-        { name: "Python", level: 80 },
+        { name: "Python", level: 85 },
         { name: "R", level: 70 },
-        { name: "SQL", level: 85 },
-        { name: "Data Visualization", level: 75 }
+        { name: "SQL", level: 90 },
+        { name: "Data Visualization", level: 80 },
+        { name: "Machine Learning", level: 70 },
+        { name: "Statistics", level: 75 }
       ]
     },
     {
-      title: "Other Skills",
+      title: "Project Management",
       icon: BrainCircuit,
-      color: "#CAFA43",
+      color: "#ef4444",
       skills: [
-        { name: "WordPress", level: 90 },
-        { name: "UI/UX Design", level: 75 },
-        { name: "Git/GitHub", level: 85 },
-        { name: "Problem Solving", level: 95 }
+        { name: "Agile/Scrum", level: 85 },
+        { name: "Team Leadership", level: 90 },
+        { name: "Project Planning", level: 85 },
+        { name: "Client Management", level: 80 },
+        { name: "Git/GitHub", level: 90 },
+        { name: "DevOps", level: 75 }
+      ]
+    },
+    {
+      title: "WordPress & CMS",
+      icon: Palette,
+      color: "#ef4444",
+      skills: [
+        { name: "WordPress", level: 95 },
+        { name: "Custom Themes", level: 90 },
+        { name: "Plugin Development", level: 85 },
+        { name: "WooCommerce", level: 80 },
+        { name: "PHP", level: 85 },
+        { name: "MySQL", level: 80 }
       ]
     }
   ];
@@ -95,7 +104,7 @@ export default function SkillsSection() {
           return (
             <div 
               key={index}
-              className="bg-[#222224] p-6 rounded-xl shadow-lg relative overflow-hidden border border-transparent hover:border-[#CAFA43] transition-all duration-300"
+              className="bg-[#222224] p-6 rounded-xl shadow-lg relative overflow-hidden border border-transparent hover:border-red-500 transition-all duration-300"
               style={{ 
                 animationDelay: `${index * 0.1}s`,
                 opacity: visible ? 1 : 0,
@@ -106,21 +115,21 @@ export default function SkillsSection() {
             >
               <div className="mb-6 flex items-center">
                 <div className="p-3 rounded-lg bg-[#1A1A1A] mr-3">
-                  <IconComponent className="w-6 h-6 text-[#CAFA43]" />
+                  <IconComponent className="w-6 h-6 text-red-500" />
                 </div>
-                <h3 className="text-xl font-bold text-[#CAFA43]">{category.title}</h3>
+                <h3 className="text-xl font-bold text-red-500">{category.title}</h3>
               </div>
               
               <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex}>
                     <div className="flex justify-between mb-1">
-                      <span className="text-sm font-medium text-gray-300">{skill.name}</span>
-                      <span className="text-xs font-medium text-gray-400">{skill.level}%</span>
+                      <span className="text-sm font-medium text-white/80">{skill.name}</span>
+                      <span className="text-xs font-medium text-white/60">{skill.level}%</span>
                     </div>
                     <div className="w-full bg-[#2C2C2E] rounded-full h-2.5 overflow-hidden">
                       <div 
-                        className="bg-[#CAFA43] h-2.5 rounded-full relative"
+                        className="bg-red-500 h-2.5 rounded-full relative"
                         style={{ 
                           width: visible ? `${skill.level}%` : '0%',
                           transition: 'width 1s ease-in-out',

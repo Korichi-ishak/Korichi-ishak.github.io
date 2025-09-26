@@ -34,7 +34,7 @@ export default function ProjectCard({ title, description, technologies, link, im
   
   return (
     <div 
-      className="bg-[#222224] rounded-xl border border-[#2C2C2E] shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:border-[#CAFA43] transform hover:-translate-y-1"
+      className="bg-[#222224] rounded-xl border border-white/10 shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-xl hover:border-red-500 transform hover:-translate-y-1"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -42,7 +42,7 @@ export default function ProjectCard({ title, description, technologies, link, im
       {shouldHaveImage && !imageError && (
         <div className="relative w-full h-48 overflow-hidden">
           {/* Fallback colored background in case image fails */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A] to-[#252525]"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black to-[#1A1A1A]"></div>
           
           {/* Image with error handling */}
           <Image 
@@ -55,10 +55,10 @@ export default function ProjectCard({ title, description, technologies, link, im
             priority
           />
           
-          <div className="absolute inset-0 bg-gradient-to-t from-[#151515] to-transparent opacity-60"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
           
           {/* Tech tag overlay */}
-          <div className="absolute top-3 left-3 bg-[#000000]/70 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-[#CAFA43] border border-[#CAFA43]/30">
+          <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-red-500 border border-red-500/30">
             {technologies[0]}
           </div>
           
@@ -67,7 +67,7 @@ export default function ProjectCard({ title, description, technologies, link, im
               href={link} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="absolute top-3 right-3 bg-[#CAFA43] text-black p-2 rounded-full transform transition-transform duration-300 group-hover:rotate-12"
+              className="absolute top-3 right-3 bg-red-500 text-black p-2 rounded-full transform transition-transform duration-300 group-hover:rotate-12"
               aria-label="Visit project"
             >
               <ExternalLinkIcon className="w-4 h-4" />
@@ -86,19 +86,19 @@ export default function ProjectCard({ title, description, technologies, link, im
       {/* Content */}
       <div className="p-6">
         <div className="flex justify-between items-center mb-3">
-          <h3 className="text-xl font-bold text-white group-hover:text-[#CAFA43] transition-colors">
+          <h3 className="text-xl font-bold text-white group-hover:text-red-500 transition-colors">
             {title}
           </h3>
-          {(!shouldHaveImage || imageError) && <CodeIcon className="w-8 h-8 text-[#CAFA43] group-hover:rotate-12 transition-transform" />}
+          {(!shouldHaveImage || imageError) && <CodeIcon className="w-8 h-8 text-red-500 group-hover:rotate-12 transition-transform" />}
         </div>
         
-        <p className="text-gray-400 mb-4 text-sm">{description}</p>
+        <p className="text-white/70 mb-4 text-sm">{description}</p>
         
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech, index) => (
             <span 
               key={index} 
-              className="text-xs bg-[#2C2C2E] text-gray-300 px-2 py-1 rounded-md"
+              className="text-xs bg-[#2C2C2E] text-white/80 px-2 py-1 rounded-md"
             >
               {tech}
             </span>
@@ -110,7 +110,7 @@ export default function ProjectCard({ title, description, technologies, link, im
             href={link} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center text-sm text-[#CAFA43] hover:underline"
+            className="inline-flex items-center text-sm text-red-500 hover:underline"
           >
             View Project <ExternalLinkIcon className="w-4 h-4 ml-1" />
           </a>
