@@ -91,11 +91,11 @@ export function NavBar({
   return (
     <div
       className={cn(
-        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6",
+        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6 pointer-events-none",
         className
       )}>
       <div
-        className="flex items-center gap-3 bg-black/70 border border-white/10 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+        className="pointer-events-auto flex items-center gap-1 sm:gap-3 bg-black/70 border border-white/10 backdrop-blur-lg py-1 px-1 rounded-2xl shadow-lg">
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name
@@ -106,31 +106,24 @@ export function NavBar({
               href={item.url}
               onClick={() => setActiveTab(item.name)}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
-                "text-white/80 hover:text-red-500",
-                isActive && "bg-white/10 text-red-500"
+                "relative cursor-pointer text-[13px] font-medium px-5 py-2 rounded-full transition-colors flex items-center justify-center",
+                "text-white/70 hover:text-red-500",
+                isActive && "bg-white/10 text-red-500 shadow-inner shadow-red-500/20"
               )}>
-              <span className="hidden md:inline">{item.name}</span>
-              <span className="md:hidden">
-                <Icon size={18} strokeWidth={2.5} />
+              <span className="hidden md:inline tracking-wide">{item.name}</span>
+              <span className="md:hidden w-9 h-9 flex items-center justify-center rounded-xl border border-white/5 bg-white/5 shadow-sm shadow-black/40 active:scale-95 transition">
+                <Icon size={20} strokeWidth={2.2} />
               </span>
               {isActive && (
                 <motion.div
                   layoutId="lamp"
                   className="absolute inset-0 w-full bg-red-500/10 rounded-full -z-10"
                   initial={false}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 30,
-                  }}>
-                  <div
-                    className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-red-500 rounded-t-full">
-                    <div
-                      className="absolute w-12 h-6 bg-red-500/20 rounded-full blur-md -top-2 -left-2" />
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}>
+                  <div className="hidden md:block absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-red-500 rounded-t-full">
+                    <div className="absolute w-12 h-6 bg-red-500/20 rounded-full blur-md -top-2 -left-2" />
                     <div className="absolute w-8 h-6 bg-red-500/20 rounded-full blur-md -top-1" />
-                    <div
-                      className="absolute w-4 h-4 bg-red-500/20 rounded-full blur-sm top-0 left-2" />
+                    <div className="absolute w-4 h-4 bg-red-500/20 rounded-full blur-sm top-0 left-2" />
                   </div>
                 </motion.div>
               )}

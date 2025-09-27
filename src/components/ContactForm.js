@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MailIcon, SendIcon, CheckCircleIcon, AlertCircleIcon, BriefcaseIcon } from "lucide-react";
+import SectionHeader from "./ui/SectionHeader";
 
 export default function ContactForm() {
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
@@ -48,9 +49,13 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 bg-[#0f0f0f]">
+    <section id="contact" className="py-24 px-4 bg-[#0f0f0f]">
       <div className="max-w-6xl mx-auto">
-        <h2 className="section-title">Get In Touch</h2>
+        <SectionHeader
+          kicker="COLLABORATE"
+          title={<><span className='text-white'>Let’s</span> Talk</>}
+          subtitle="Open to freelance, product partnerships & impactful full‑time roles."
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="order-2 md:order-1">

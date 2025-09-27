@@ -1,5 +1,6 @@
 import React from "react";
 import { LogoCarousel } from "./ui/logo-carousel";
+import SectionHeader from "./ui/SectionHeader";
 
 function LogoImg({ src, alt, className }) {
   return <img src={src} alt={alt} className={className} />;
@@ -24,10 +25,16 @@ const logos = [
 
 export default function LogoSkills() {
   return (
-    <section id="skills" className="py-16 px-4">
-      <h2 className="section-title">Technical Skills</h2>
-      <div className="max-w-4xl mx-auto rounded-xl border border-white/10 bg-[#111111] p-4">
+    <section id="skills" className="py-24 px-4">
+      <div className="max-w-6xl mx-auto">
+        <SectionHeader
+          kicker="STACK"
+          title={<><span className='text-white'>Core</span> Tech Stack</>}
+          subtitle="Daily driver technologies across frontend, backend, data & tooling."
+        />
+        <div className="max-w-4xl mx-auto rounded-xl border border-white/10 bg-[#111111] p-4">
         <LogoCarousel columnCount={4} logos={logos} />
+        </div>
       </div>
     </section>
   );

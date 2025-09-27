@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import { BriefcaseIcon, GraduationCapIcon, LightbulbIcon, ArrowUpIcon, MailIcon, LinkedinIcon, GithubIcon, PhoneIcon } from "lucide-react";
+import SectionHeader from "../components/ui/SectionHeader";
 
 // Import components
 import Navigation from "../components/Navigation";
@@ -9,6 +10,7 @@ import ProjectCard from "../components/ProjectCard";
 import LogoSkills from "../components/LogoSkills";
 import ExperienceTimeline from "../components/ExperienceTimeline";
 import ContactForm from "../components/ContactForm";
+import About from "../components/About";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,18 +23,47 @@ const geistMono = Geist_Mono({
 
 export default function Home() {
   const wpProjects = [
-    { title: "EAG Video Editor", description: "Elegant video editing website powered by WordPress.", technologies: ["WordPress", "UI/UX Design"], link: "https://eagvideoeditor.com" },
-    { title: "Drip Drop DZ", description: "Innovative design platform.", technologies: ["WordPress"], link: "https://dripdropdz.com" },
-    { title: "Belfort Dzair", description: "Corporate website with modern design.", technologies: ["WordPress"], link: "https://belfortdzair.com" },
-    { title: "Plombi", description: "Innovative plumbing services website.", technologies: ["WordPress"], link: "https://plombi.live-website.com" },
-    { title: "Khadamati", description: "Premium Digital Services & Solutions", technologies: ["WordPress"], link: "https://khadamati-store.com" },
-    { title: "Point de location", description: "Digital car rental – book, pay & drive in clicks", technologies: ["WordPress"], link: "https://lepointdelocation.com" },
+    {
+      title: "GOODPC",
+      description: "E‑commerce vitrine pour PC sur mesure : catalogue optimisé, mise en avant des configurations et UX rapide.",
+      technologies: ["Vite", "React", "Node.js", "MongoDB"],
+      link: "https://itech-theta.vercel.app",
+      imageUrl: "/recyc.png"
+    },
+    {
+      title: "DivanHane",
+      description: "Site restaurant / lounge : présentation du menu, ambiance visuelle chaleureuse, optimisation mobile pour réservations.",
+      technologies: ["Vite", "React", "Node.js", "MongoDB"],
+      link: "https://divanhane.vercel.app",
+      imageUrl: "/divanhan.png"
+    },
+    {
+      title: "QueenDEQ",
+      description: "Plateforme féminine avec tests de personnalité (type d’homme, style, bien‑être) et contenus lifestyle interactifs.",
+      technologies: ["Vite", "React", "Node.js", "MongoDB"],
+      link: "https://www.queendeq.com",
+      imageUrl: "/quq.png"
+    },
+    {
+      title: "Autotechno",
+      description: "Catalogue pièces auto & services avec structure SEO, navigation catégorisée et design épuré.",
+      technologies: ["Vite", "React", "Node.js", "MongoDB"],
+      link: "https://autotechno.vercel.app",
+      imageUrl: "/autotech.png"
+    },
+    {
+      title: "Point de location",
+      description: "Plateforme de location de voitures : recherche rapide, fiches véhicules et parcours de réservation fluide.",
+      technologies: ["WordPress"],
+      link: "https://lepointdelocation.com",
+      imageUrl: "/pdloc.png"
+    },
   ];
   
   const mobileProjects = [
     { title: "Wassalni", description: "Carpooling mobile app.", technologies: ["React Native", "Node.js","MongoDB"], link: "" },
     { title: "Clinical", description: "Medical mobile application.", technologies: ["React Native","Node.js","MongoDB"], link: "" },
-    { title: "Astrolabs", description: "Mental health & personal assistance app.", technologies: ["React Native","Node.js","MongoDB","Firebase Firestore"], link: "" },
+    { title: "Astrolabs", description: "Mental health & personal assistance app.", technologies: ["React Native","Node.js","MongoDB","Firebase Firestore"], link: "https://play.google.com/store/apps/details?id=com.knoxdrill.frontend&hl=en" },
   ];
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,89 +84,35 @@ export default function Home() {
       <main>
         <Hero />
         
-        {/* About Section */}
-        <section id="about" className="py-20 px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="section-title">About Me</h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                <div className="bg-[#222224] p-8 rounded-xl border border-white/10 shadow-lg hover:border-red-500 transition-all duration-300">
-                <p className="text-lg leading-relaxed text-white/80">
-                  I am a passionate fullstack developer, data analyst, and UI/UX designer with extensive experience in project management and team leadership. I specialize in creating comprehensive digital solutions that drive business growth and deliver exceptional user experiences.
-                </p>
-                <p className="text-lg leading-relaxed text-white/80 mt-4">
-                  With expertise spanning from frontend design to backend architecture, data analysis, and team coordination, I bring a holistic approach to every project. My goal is to build scalable, efficient, and impactful solutions while leading teams to success.
-                </p>
-                <p className="text-lg leading-relaxed text-white/80 mt-4">
-                  As the founder of Wiizdev and with experience at leading companies like Aurafolio and Digitaria.Inc, I combine technical excellence with strategic vision to deliver results that exceed expectations. 🚀
-                </p>
-              </div>
-              
-              <div className="space-y-6">
-                <div className="bg-[#222224] p-6 rounded-xl border border-white/10 shadow-lg hover:border-red-500 transition-all duration-300">
-                  <h3 className="text-xl font-bold text-red-500 mb-3">Fullstack Development</h3>
-                  <div className="flex items-start">
-                    <div className="bg-[#2C2C2E] p-2 rounded-lg mr-4">
-                      <BriefcaseIcon className="w-5 h-5 text-red-500" />
-                    </div>
-                    <p className="text-white/80">
-                      Specializing in end-to-end development with modern technologies, creating scalable applications from concept to deployment.
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="bg-[#222224] p-6 rounded-xl border border-white/10 shadow-lg hover:border-red-500 transition-all duration-300">
-                  <h3 className="text-xl font-bold text-red-500 mb-3">Leadership & Management</h3>
-                  <div className="flex items-start">
-                    <div className="bg-[#2C2C2E] p-2 rounded-lg mr-4">
-                      <GraduationCapIcon className="w-5 h-5 text-red-500" />
-                    </div>
-                    <p className="text-white/80">
-                      Leading teams and managing projects with a focus on delivering high-quality solutions while fostering innovation and growth.
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="bg-[#222224] p-6 rounded-xl border border-white/10 shadow-lg hover:border-red-500 transition-all duration-300">
-                  <h3 className="text-xl font-bold text-red-500 mb-3">Data & Design Expertise</h3>
-                  <div className="flex items-start">
-                    <div className="bg-[#2C2C2E] p-2 rounded-lg mr-4">
-                      <LightbulbIcon className="w-5 h-5 text-red-500" />
-                    </div>
-                    <p className="text-white/80">
-                      Combining data analysis insights with intuitive UI/UX design to create solutions that are both functional and user-friendly.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <About />
         
-        {/* Projects Section */}
-        <section id="projects" className="py-20 px-4 bg-black">
+        {/* Shipped Products Section */}
+        <section id="projects" className="py-24 px-4 bg-black">
           <div className="max-w-6xl mx-auto">
-            <h2 className="section-title">Projects</h2>
-            
-            <div className="mb-16">
-              <div className="flex justify-between items-center mb-8">
-                <h3 className="text-2xl font-semibold text-white">WordPress Websites</h3>
-                <div className="h-0.5 bg-white/10 flex-grow ml-4 rounded-full"></div>
-              </div>
-              
+            <SectionHeader
+              kicker="SHOWCASE"
+              title={<><span className='text-white'>Shipped</span> Products</>}
+              subtitle="Production builds spanning fullstack web platforms & mobile experiences."
+            />
+            <div className="mb-20">
+              <SectionHeader
+                kicker="PLATFORMS"
+                title={<><span className='text-white'>Platform</span> Builds</>}
+                className="mb-10"
+              />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {wpProjects.map((project, index) => (
                   <ProjectCard key={index} {...project} />
                 ))}
               </div>
             </div>
-            
             <div>
-              <div className="flex justify-between items-center mb-8">
-                <h3 className="text-2xl font-semibold text-white">Mobile Applications</h3>
-                <div className="h-0.5 bg-white/10 flex-grow ml-4 rounded-full"></div>
-              </div>
-              
+              <SectionHeader
+                kicker="MOBILE"
+                title={<><span className='text-white'>Mobile</span> Apps</>}
+                subtitle="React Native products focused on usability, retention & performance."
+                className="mb-10"
+              />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {mobileProjects.map((project, index) => (
                   <ProjectCard key={index} {...project} />
