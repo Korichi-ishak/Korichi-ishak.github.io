@@ -1,35 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Portfolio — Ishak Korichi
 
-## Getting Started
+Code source de mon portfolio : présentation, parcours, compétences, projets et formulaire de contact.
 
-Run the development server:
+## Sections
+
+- Accueil et présentation
+- Parcours professionnel (frise)
+- Compétences et technologies
+- Projets
+- Contact
+
+## Stack
+
+Next.js · React · Tailwind CSS · Framer Motion · Lucide · React Icons
+
+## Lancer en local
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open http://localhost:3000 with your browser to see the result.
+## Déploiement
 
-You can start editing the page by modifying `src/pages/index.js`. The page auto-updates as you edit the file.
+Le site est exporté en statique (`output: "export"`) et publié sur GitHub Pages par le workflow `.github/workflows/nextjs.yml` à chaque push sur la branche principale.
 
-API routes can be accessed on http://localhost:3000/api/hello. This endpoint can be edited in `src/pages/api/hello.js`.
+---
 
-This project uses `next/font` to automatically optimize and load Geist.
-
-## Learn More
-
-To learn more about Next.js:
-- https://nextjs.org/docs
-- https://nextjs.org/learn-pages-router
-
-## Deploy
-
-Deploy easily with Vercel: https://vercel.com
-
-Refer to the Next.js deployment docs for more details.
+Ishak Korichi · [LinkedIn](https://www.linkedin.com/in/ishak-korichi) · [GitHub](https://github.com/Korichi-ishak)
